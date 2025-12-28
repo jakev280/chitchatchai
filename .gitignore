@@ -1,0 +1,28 @@
+# Node modules (if using npm or yarn)
+node_modules/
+
+# Build output (if using build tools like Webpack, Parcel, Vite)
+dist/
+build/
+out/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE/editor files
+.vscode/
+.idea/
+
+# Environment files (if you store secrets)
+.env
+.env.local
+.env.*.local
+
+# Optional: cache folders for tooling
+.cache/

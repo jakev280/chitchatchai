@@ -4,176 +4,121 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chit Chat Chai</title>
-  
   <link rel="stylesheet" href="style.css">
-  
   <script src="script.js" defer></script>
 </head>
 <body>
 
-<header>
-  <h1>Chit Chat Chai </h1>
-  <p>Creating connection, confidence, and community – one cup of tea at a time!</p>
-  <div class="event-details">
-    <span class="detail-item"><strong>📅 Every Monday:</strong> 11am – 1pm</span>
-    <span class="detail-item"><strong>📍 Location:</strong> St Margarets Centre, Brantingham Rd, M21 0TT</span>
-  </div>
-</header>
+  <header>
+    <h1>Chit Chat Chai</h1>
+    <p>Creating connection, confidence, and community – one cup of tea at a time!</p>
+    <div class="event-details">
+      <span class="detail-item"><strong>📅 Every Monday:</strong> 11am – 1pm</span>
+      <span class="detail-item"><strong>📍 Location:</strong> St Margarets Centre, Brantingham Rd, M21 0TT</span>
+    </div>
+  </header>
 
-<section class="funders-section">
-  <h2>Our Supporters</h2>
-  <div class="funder-grid">
+  <section class="funders-section">
+    <h2>Our Supporters</h2>
+    <div class="funder-grid">
+      <div class="funder-card" onclick="toggleFunder(this)">
+        <div class="funder-header">
+          <img src="images/unicorn-logo.png" alt="Unicorn Grocery" class="funder-logo">
+          <div class="funder-summary"><strong>Unicorn Grocery</strong><span> Click to see impact</span></div>
+        </div>
+        <div class="funder-details">
+          <p>Funding supports our weekly fresh ingredient costs for authentic chai and snacks.</p>
+        </div>
+      </div>
+
+      <div class="funder-card" onclick="toggleFunder(this)">
+        <div class="funder-header">
+          <img src="images/national-lottery-logo.png" alt="National Lottery" class="funder-logo">
+          <div class="funder-summary"><strong>National Lottery</strong><span> Click to see impact</span></div>
+        </div>
+        <div class="funder-details">
+          <p>Helps cover venue hire and volunteer training for a safe community space.</p>
+        </div>
+      </div>
+
+      <div class="funder-card" onclick="toggleFunder(this)">
+        <div class="funder-header">
+          <img src="images/bee-network-logo.png" alt="Bee Network TfGM" class="funder-logo">
+          <div class="funder-summary"><strong>Bee Network (TfGM)</strong><span> Click to see impact</span></div>
+        </div>
+        <div class="funder-details">
+          <p>Provides bikes, safety equipment, and cycle training for our members.</p>
+        </div>
+      </div>
+
+      <div class="funder-card" onclick="toggleFunder(this)">
+        <div class="funder-header">
+          <img src="images/anwyl-logo.png" alt="Anwyl Homes" class="funder-logo">
+          <div class="funder-summary"><strong>Anwyl Homes</strong><span> Click to see impact</span></div>
+        </div>
+        <div class="funder-details">
+          <p>Funds multi-lingual outreach materials to reach women in need.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tabs-section">
+    <h2>What We Do</h2>
+    <p>ChitChatChai is a community-led initiative supporting refugee and migrant women through informal English practice, shared tea, and confidence-building activities.</p>
     
-    <div class="funder-card" onclick="toggleFunder(this)">
-      <div class="funder-header">
-        <img src="images/unicorn-logo.png" alt="Unicorn Grocery" class="funder-logo">
-        <div class="funder-summary">
-          <strong>Unicorn Grocery</strong>
-          <span>Click to see impact</span>
-        </div>
-      </div>
-      <div class="funder-details">
-        <p>Funding from Unicorn Grocery supports our weekly fresh ingredient costs, allowing us to serve authentic, high-quality chai and snacks at every session.</p>
-      </div>
+    <h2>Our Journey Through the Years</h2>
+    
+    <div class="tab-container">
+        <button class="tab-btn" data-year="year2021">2021</button>
+        <button class="tab-btn" data-year="year2022">2022</button>
+        <button class="tab-btn" data-year="year2023">2023</button>
+        <button class="tab-btn active" data-year="year2024">2024</button>
     </div>
 
-    <div class="funder-card" onclick="toggleFunder(this)">
-      <div class="funder-header">
-        <img src="images/national-lottery-logo.png" alt="National Lottery" class="funder-logo">
-        <div class="funder-summary">
-          <strong>National Lottery</strong>
-          <span>Click to see impact</span>
-        </div>
-      </div>
-      <div class="funder-details">
-        <p>The National Lottery Community Fund helps cover our venue hire and volunteer training, ensuring a safe and consistent space for our community.</p>
-      </div>
+    <div id="journey-content-target" class="tab-content active card">
+      <p>Loading highlights...</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="card">
+      <h2>Why It Matters</h2>
+      <p>Language barriers and social isolation can make everyday life challenging. We provide a relaxed, welcoming space where women can learn, practise, and build friendships at their own pace.</p>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="contact-trigger" style="text-align: center;">
+      <button class="push-button" onclick="toggleContactForm()">
+        <span class="button-icon">✉️</span> Send us a Message
+      </button>
     </div>
 
-    <div class="funder-card" onclick="toggleFunder(this)">
-      <div class="funder-header">
-        <img src="images/bee-network-logo.png" alt="Bee Network TfGM" class="funder-logo">
-        <div class="funder-summary">
-          <strong>Bee Network (TfGM)</strong>
-          <span>Click to see impact</span>
-        </div>
-      </div>
-      <div class="funder-details">
-        <p>Support from the Bee Network and TfGM has been vital for our cycling sessions. This funding helps provide bikes, safety equipment, and cycle training to help our members navigate Manchester with confidence.</p>
-      </div>
-    </div>
-
-    <div class="funder-card" onclick="toggleFunder(this)">
-      <div class="funder-header">
-        <img src="images/anwyl-logo.png" alt="Anwyl Homes" class="funder-logo">
-        <div class="funder-summary">
-          <strong>Anwyl Homes</strong>
-          <span>Click to see impact</span>
-        </div>
-      </div>
-      <div class="funder-details">
-        <p>Anwyl's generous contribution has funded our community outreach materials. This allows us to print flyers and resources in multiple languages, ensuring we reach the women who need our support the most.</p>
+    <div id="contactFormContainer" class="contact-form-card">
+      <div class="card">
+        <h2>Contact ChitChatChai</h2>
+        <form action="https://formspree.io/f/mdaollor" method="POST">
+          <label>Your Name
+            <input type="text" name="name" placeholder="Enter your name" required>
+          </label>
+          <label>Your Email
+            <input type="email" name="email" placeholder="email@example.com" required>
+          </label>
+          <label>Message
+            <textarea name="message" rows="4" placeholder="How can we help?" required></textarea>
+          </label>
+          <div class="form-actions">
+            <button type="submit" class="button">Send Message</button>
+          </div>
+        </form>
       </div>
     </div>
+  </section>
 
-    </div>
-</section>
-  
-
-
-<section class="tabs-section">
-  <h2>What We Do</h2>
-    <p>
-      ChitChatChai is a community-led initiative supporting refugee and migrant women
-      through informal English practice, shared tea, and confidence-building activities
-      such as cycling and social meet‑ups.
-    </p>
-  <h2>Our Journey Through the Years</h2>
-  
-  <div class="tab-container">
-    <button class="tab-btn" onclick="openYear(event, 'year2021')">2021</button>
-    <button class="tab-btn" onclick="openYear(event, 'year2022')">2022</button>
-    <button class="tab-btn" onclick="openYear(event, 'year2023')">2023</button>
-    <button class="tab-btn active" onclick="openYear(event, 'year2024')">2024</button>
-  </div>
-
-  <div id="year2021" class="tab-content card">
-  <h3>2021 Highlights</h3>
-  <p>
-    Chit Chat Chai opened its doors in September 2021 at St Margaret’s Centre, creating a welcoming,
-    women-only community space focused on English learning, wellbeing, and connection. The project
-    supported around 20 learners from 11 countries through differentiated English classes, a
-    supportive creche, and a community café that encouraged conversation, confidence, and friendship.
-  </p>
-</div>
-
-  <div id="year2022" class="tab-content card">
-    <h3>2022 Highlights</h3>
-    <p>We moved to in-person meet-ups! This year saw our first physical tea gatherings in local community centers.</p>
-  </div>
-
-  <div id="year2023" class="tab-content card">
-    <h3>2023 Highlights</h3>
-    <p>Expansion year. We grew our volunteer base and started our first collaboration with local cycling organizations.</p>
-  </div>
-
-  <div id="year2024" class="tab-content card active">
-    <h3>2024 Highlights</h3>
-    <p>Our most active year yet! Launched the cycling group for women and established our formal partnership with the Bee Network.</p>
-  </div>
-
-</section>
-
-
-<section>
-
-  <div class="card">
-    <h2>Why It Matters</h2>
-    <p>
-      Language barriers and social isolation can make everyday life challenging.
-      We provide a relaxed, welcoming space where women can learn, practise,
-      and build friendships at their own pace.
-    </p>
-  </div>
-
-</section>
-
-<section class="contact-section">
-  <div class="contact-trigger" style="text-align: center;">
-    <button class="push-button" onclick="toggleContactForm()">
-      <span class="button-icon">✉️</span> Send us a Message
-    </button>
-  </div>
-
-  <div id="contactFormContainer" class="contact-form-card">
-    <div class="card" style="position: relative;">
-      <button type="button" class="close-x" onclick="toggleContactForm()">&times;</button>
-      
-      <h2>Contact ChitChatChai</h2>
-      <form action="https://formspree.io/f/mdaollor" method="POST">
-        <label>Your Name
-          <input type="text" name="name" placeholder="Enter your name" required>
-        </label>
-        
-        <label>Your Email
-          <input type="email" name="email" placeholder="email@example.com" required>
-        </label>
-        
-        <label>Message
-          <textarea name="message" rows="4" placeholder="How can we help?" required></textarea>
-        </label>
-        
-        <div class="form-actions">
-          <button type="submit" class="button">Send Message</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <p>© ChitChatChai – Community initiative</p>
-</footer>
+  <footer>
+    <p>© ChitChatChai – Community initiative</p>
+  </footer>
 
 </body>
 </html>

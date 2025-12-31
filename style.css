@@ -110,6 +110,16 @@ h2 { color: white; margin-top: 0; }
 .tab-content { display: none; }
 .tab-content.active { display: block; }
 
+.journey-image {
+    width: 100%;           /* Makes sure it fits inside the card */
+    max-width: 600px;      /* Prevents it from getting too huge on desktops */
+    height: auto;          /* Maintains the correct proportions */
+    border-radius: 12px;   /* Matches your card corners */
+    margin-top: 15px;      /* Adds space between the text and the photo */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle edge */
+    display: block;
+}
+
 /* 5. FUNDER CARDS */
 .funder-grid {
     display: grid;

@@ -9,16 +9,50 @@
 </head>
 <body>
 
-  <header>
-    <h1>Chit Chat Chai</h1>
-    <p>Creating connection, confidence, and community – one cup of tea at a time!</p>
-    <div class="event-details">
-      <span class="detail-item"><strong>📅 Every Monday:</strong> 11am – 1pm</span>
-      <span class="detail-item"><strong>📍 Location:</strong> St Margarets Centre, Brantingham Rd, M21 0TT</span>
+  <header class="sticky-header">
+    <div class="header-content">
+      <img src="images/ccc-logo.png" alt="Chit Chat Chai Logo" class="header-logo-circle">
+      <p class="header-tagline">
+        Creating connection, confidence, and community
+        <span class="tagline-break">one cup of tea at a time!</span>
+      </p>
+      <div class="event-details">
+        <span class="detail-item"><strong>📅 Mon:</strong> 11am–1pm</span>
+        <span class="detail-item"><strong>📍 St Margarets Centre</strong></span>
+      </div>
     </div>
   </header>
 
-  <section class="funders-section">
+  <img src="images/2022-2.png" alt="Chit Chat Chai 2021 Session" class="header-main-img">
+
+  <section class="tabs-section">
+    <h2>What We Do</h2>
+    <p>ChitChatChai is a community-led initiative supporting refugee and migrant women through informal English practice, shared tea, and confidence-building activities.</p>
+    
+    <h2>Our Journey Through the Years</h2>
+    
+    <div class="tab-container">
+        <button class="tab-btn" data-year="year2021">2021</button>
+        <button class="tab-btn" data-year="year2022">2022</button>
+        <button class="tab-btn" data-year="year2023">2023</button>
+        <button class="tab-btn active" data-year="year2024">2024</button>
+    </div>
+
+    <div id="journey-content-target" class="tab-content active card">
+      <p>Loading highlights...</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="card">
+      <h2>Why It Matters</h2>
+      <p>Language barriers and social isolation can make everyday life challenging. We provide a relaxed, welcoming space where women can learn, practise, and build friendships at their own pace.</p>
+    </div>
+  </section>
+
+    </section>
+
+    <section class="funders-section">
     <h2>Our Supporters</h2>
     <div class="funder-grid">
       <div class="funder-card" onclick="toggleFunder(this)">
@@ -63,31 +97,6 @@
     </div>
   </section>
 
-  <section class="tabs-section">
-    <h2>What We Do</h2>
-    <p>ChitChatChai is a community-led initiative supporting refugee and migrant women through informal English practice, shared tea, and confidence-building activities.</p>
-    
-    <h2>Our Journey Through the Years</h2>
-    
-    <div class="tab-container">
-        <button class="tab-btn" data-year="year2021">2021</button>
-        <button class="tab-btn" data-year="year2022">2022</button>
-        <button class="tab-btn" data-year="year2023">2023</button>
-        <button class="tab-btn active" data-year="year2024">2024</button>
-    </div>
-
-    <div id="journey-content-target" class="tab-content active card">
-      <p>Loading highlights...</p>
-    </div>
-  </section>
-
-  <section>
-    <div class="card">
-      <h2>Why It Matters</h2>
-      <p>Language barriers and social isolation can make everyday life challenging. We provide a relaxed, welcoming space where women can learn, practise, and build friendships at their own pace.</p>
-    </div>
-  </section>
-
   <section class="contact-section">
     <div class="contact-trigger" style="text-align: center;">
       <button class="push-button" onclick="toggleContactForm()">
@@ -114,7 +123,6 @@
         </form>
       </div>
     </div>
-  </section>
 
   <footer>
     <p>© ChitChatChai – Community initiative</p>

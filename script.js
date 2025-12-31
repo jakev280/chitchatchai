@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     switchYear('year2024');
 });
 
+
 function toggleFunder(card) {
     // This toggles the 'is-expanded' class on the card you clicked
     card.classList.toggle('is-expanded');

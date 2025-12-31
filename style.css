@@ -1,21 +1,39 @@
+/* 0. BRAND COLOR TEMPLATE */
+:root {
+/* Nature-Focused Dark Theme Mapping */
+    --primary-brown: #120d08;      /* Deep Peppercorn (Nature's Dark) */
+    --primary-brown-dark: #000000; /* Shadow for deep depth */
+    --accent-tan: #f4b41a;         /* Turmeric Gold from your flyer */
+    --tab-bg: #1e160e;             /* Roasted Leaf (Darker tab) */
+    --page-bg: #120d08;            /* Keeps the whole page dark */
+    --funder-bg: #1e160e;          /* Card background */
+    --text-main: #f5ede0;          /* Steamed Milk (Easy to read) */
+    --text-white: #f5ede0;         /* Consistent off-white for all light text */
+    --footer-bg: #0b0805;          /* Even deeper finish */
+    
+    /* New Nature Accent (Can be used for borders) */
+    --nature-green: #4a5d23;
+}
+
 /* 1. RESET & BASE STYLES */
 * { box-sizing: border-box; }
 
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
-    background: #faf7f2;
-    color: #333;
+    background: var(--page-bg);
+    color: var(--text-main);
     line-height: 1.6;
     transition: background 0.3s ease, color 0.3s ease;
 }
 
 /* 2. HEADER & TYPOGRAPHY */
 header {
-    background: #8b5e3c;
-    color: white;
+    background: var(--primary-brown);
+    color: var(--text-white);
     padding: 2rem 1rem;
     text-align: center;
+    overflow: hidden;
 }
 
 header h1 {
@@ -27,30 +45,76 @@ header h1 {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* Responsive Underline */
 header h1::after {
     content: '';
     display: block;
     width: 80%;
     max-width: 500px;
     height: 4px;
-    background: #d2b48c;
+    background: var(--accent-tan);
     margin: 10px auto 0;
     border-radius: 2px;
 }
 
-.header-icons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 1rem;
+.header-main-img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    object-position: 50% 65%;
+    border-radius: 0 0 20px 20px;
+    display: block;
+    margin-bottom: 25px;
 }
 
-.header-logo {
+/* 1. STICKY HEADER LOGIC */
+.sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Keeps it above all other content */
+    background: var(--primary-brown);
+    padding: 10px 1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    border-bottom: 2px solid var(--nature-green);
+}
+
+.header-content {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 2. CIRCULAR LOGO (Same style as founders) */
+.header-logo-circle {
+    width: 60px; 
     height: 60px;
-    width: auto;
-    object-fit: contain;
+    object-fit: contain; 
+    background: white; /* Matches founders logo background */
+    padding: 8px; 
+    border-radius: 50%;
+    border: 2px solid var(--accent-tan);
+}
+
+.tagline-break {
+    display: block; /* Forces the span onto a new line */
+    margin-top: 5px; /* Adds a tiny bit of breathing room between lines */
+    font-size: 0.9em; /* Optional: makes the second line slightly more subtle */
+    color: var(--accent-tan); /* Optional: uses your brand gold for the second half */
+}
+
+/* 3. COMPACT EVENT DETAILS FOR STICKY BAR */
+.event-details {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+}
+
+/* 4. ADJUST BANNER MARGIN */
+.header-main-img {
+    margin-top: 0; /* Ensures banner sits flush under sticky header */
+    border-radius: 0; /* Keep it sharp or adjust as preferred */
 }
 
 .tagline {
@@ -74,15 +138,15 @@ section {
     padding: 2rem 1rem;
 }
 
-h2 { color: white; margin-top: 0; }
+h2 { color: var(--text-white); margin-top: 0; }
 
 .card {
-    background: #8b5e3c;
+    background: var(--primary-brown);
     padding: 1.5rem;
     margin-bottom: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    color: white;
+    color: var(--text-white);
 }
 
 /* 4. TABS (What We Do) */
@@ -95,8 +159,8 @@ h2 { color: white; margin-top: 0; }
 }
 
 .tab-btn {
-    background: #e5ccac;
-    color: #8b5e3c;
+    background: var(--tab-bg);
+    color: var(--primary-brown);
     border: none;
     padding: 10px 20px;
     cursor: pointer;
@@ -105,18 +169,18 @@ h2 { color: white; margin-top: 0; }
     transition: 0.3s;
 }
 
-.tab-btn.active { background: #8b5e3c; color: white; }
+.tab-btn.active { background: var(--primary-brown); color: var(--text-white); }
 
 .tab-content { display: none; }
 .tab-content.active { display: block; }
 
 .journey-image {
-    width: 100%;           /* Makes sure it fits inside the card */
-    max-width: 600px;      /* Prevents it from getting too huge on desktops */
-    height: auto;          /* Maintains the correct proportions */
-    border-radius: 12px;   /* Matches your card corners */
-    margin-top: 15px;      /* Adds space between the text and the photo */
-    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle edge */
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 12px;
+    margin-top: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     display: block;
 }
 
@@ -128,16 +192,16 @@ h2 { color: white; margin-top: 0; }
 }
 
 .funder-card {
-    background: #724c31;
+    background: var(--funder-bg);
     border-radius: 12px;
     padding: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
     overflow: hidden;
-    color: white;
+    color: var(--text-white);
 }
 
-.funder-card:hover { transform: translateY(-3px); border: 2px solid #d2b48c; }
+.funder-card:hover { transform: translateY(-3px); border: 2px solid var(--accent-tan); }
 
 .funder-logo {
     width: 60px; height: 60px;
@@ -158,16 +222,16 @@ h2 { color: white; margin-top: 0; }
 
 /* 6. CONTACT FORM & BUTTONS */
 .push-button {
-    background: #8b5e3c; color: white;
+    background: var(--primary-brown); color: var(--text-white);
     border: none; padding: 1.2rem 2.5rem;
     font-size: 1.2rem; font-weight: bold;
     border-radius: 50px; cursor: pointer;
-    box-shadow: 0 6px 0 #5d3f29;
+    box-shadow: 0 6px 0 var(--primary-brown-dark);
     transition: all 0.1s ease;
     display: flex; align-items: center; gap: 10px; margin: 20px auto;
 }
 
-.push-button:active { transform: translateY(6px); box-shadow: 0 0 0 #5d3f29; }
+.push-button:active { transform: translateY(6px); box-shadow: 0 0 0 var(--primary-brown-dark); }
 
 .contact-form-card {
     max-height: 0; opacity: 0; overflow: hidden;
@@ -176,26 +240,22 @@ h2 { color: white; margin-top: 0; }
 
 .contact-form-card.is-visible { max-height: 800px; opacity: 1; padding-top: 20px; }
 
-.contact-form-card label { display: block; margin-bottom: 1rem; font-weight: bold; color: white; }
+.contact-form-card label { display: block; margin-bottom: 1rem; font-weight: bold; color: var(--text-white); }
 
 .contact-form-card input, .contact-form-card textarea {
     width: 100%; padding: 12px; margin-top: 5px; border-radius: 6px; border: 1px solid #ddd;
 }
 
 .button {
-    display: inline-block; background: white;
-    color: #8b5e3c !important; padding: 0.6rem 1.2rem;
+    display: inline-block; background: var(--text-white);
+    color: var(--primary-brown) !important; padding: 0.6rem 1.2rem;
     border-radius: 6px; font-weight: bold; text-decoration: none;
-}
-
-.success-message .button {
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
 /* 7. FOOTER */
 footer {
     text-align: center; padding: 1.5rem;
-    background: #eee; color: #666;
+    background: var(--footer-bg); color: #666;
 }
 
 /* 8. DARK MODE */
@@ -212,6 +272,12 @@ footer {
     header h1::after { width: 90%; max-width: 300px; }
     .header-logo { height: 45px; }
     .event-details { display: flex; flex-direction: column; gap: 8px; border-radius: 15px; }
+}
+
+/* MOBILE FIX: Ensure it doesn't take up too much screen space */
+@media (max-width: 600px) {
+    .header-logo-circle { width: 50px; height: 50px; }
+    .event-details { font-size: 0.75rem; padding: 0.4rem 0.8rem; }
 }
 
 /* 10. ANIMATIONS */

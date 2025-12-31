@@ -2,27 +2,58 @@ const button = document.getElementById("theme-toggle");
 const body = document.body;
 const form = document.querySelector("form");
 
+document.addEventListener('DOMContentLoaded', () => {
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const target = document.getElementById('journey-content-target');
+
+    /**
+     * The core logic to fetch and display the year content
+     */
+    async function switchYear(yearId) {
+        // 1. Visual feedback: Dim the current content
+        target.style.opacity = '0.5';
+        
+        try {
+            // 2. Fetch the small HTML snippet
+            const response = await fetch(`components/${yearId}.html`);
+            if (!response.ok) throw new Error('File not found');
+            const html = await response.text();
+            
+            // 3. Inject the new HTML and restore opacity
+            target.innerHTML = html;
+            target.style.opacity = '1';
+            
+        } catch (error) {
+            console.error("Fetch error:", error);
+            target.innerHTML = "<p>Content is being updated. Please check back soon!</p>";
+            target.style.opacity = '1';
+        }
+    }
+
+    /**
+     * Setup Button Clicks
+     */
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove 'active' class from all buttons and add to the clicked one
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            // Get the year ID (e.g., 'year2021') from the onclick or data attribute
+            // If you use data-year="year2021" in your HTML:
+            const yearId = button.getAttribute('data-year');
+            switchYear(yearId);
+        });
+    });
+
+    // Load the most recent year by default
+    switchYear('year2024');
+});
+
+
 function toggleFunder(card) {
     // This toggles the 'is-expanded' class on the card you clicked
     card.classList.toggle('is-expanded');
-}
-
-function openYear(evt, yearName) {
-    // 1. Hide all tab content elements
-    const tabContent = document.getElementsByClassName("tab-content");
-    for (let i = 0; i < tabContent.length; i++) {
-        tabContent[i].classList.remove("active");
-    }
-
-    // 2. Remove the "active" class from all buttons
-    const tabBtns = document.getElementsByClassName("tab-btn");
-    for (let i = 0; i < tabBtns.length; i++) {
-        tabBtns[i].classList.remove("active");
-    }
-
-    // 3. Show the current tab and add an "active" class to the button
-    document.getElementById(yearName).classList.add("active");
-    evt.currentTarget.classList.add("active");
 }
 
 function toggleContactForm() {

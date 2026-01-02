@@ -2,6 +2,37 @@ const button = document.getElementById("theme-toggle");
 const body = document.body;
 const form = document.querySelector("form");
 
+function initCarousel(scope = document) {
+  const carousel = scope.querySelector("#highlightsCarousel");
+  if (!carousel) return; // this year might not have a carousel
+
+  const slides = Array.from(carousel.querySelectorAll(".slide"));
+  const prevBtn = carousel.querySelector(".prev");
+  const nextBtn = carousel.querySelector(".next");
+
+  if (!slides.length || !prevBtn || !nextBtn) {
+    console.warn("Carousel found but missing slides/buttons.");
+    return;
+  }
+
+  // Find active slide or default to first
+  let currentIndex = slides.findIndex(s => s.classList.contains("active"));
+  if (currentIndex === -1) currentIndex = 0;
+
+  // Ensure only one active
+  slides.forEach((s, i) => s.classList.toggle("active", i === currentIndex));
+
+  function showSlide(newIndex) {
+    slides[currentIndex].classList.remove("active");
+    currentIndex = (newIndex + slides.length) % slides.length; // wrap
+    slides[currentIndex].classList.add("active");
+  }
+
+  // Use onclick so re-initializing doesn't stack multiple listeners
+  prevBtn.onclick = () => showSlide(currentIndex - 1);
+  nextBtn.onclick = () => showSlide(currentIndex + 1);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const tabButtons = document.querySelectorAll('.tab-btn');
     const target = document.getElementById('journey-content-target');
@@ -22,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // 3. Inject the new HTML and restore opacity
             target.innerHTML = html;
             target.style.opacity = '1';
+            initCarousel(target);
             
         } catch (error) {
             console.error("Fetch error:", error);

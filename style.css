@@ -175,14 +175,19 @@ h2 { color: var(--text-white); margin-top: 0; }
 .tab-content.active { display: block; }
 
 .journey-image {
-    width: 100%;
-    max-width: 600px;
-    height: auto;
-    border-radius: 12px;
-    margin-top: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    display: block;
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 1 / 1;   /* 👈 always square */
+  height: auto;
+
+  object-fit: cover;    /* 👈 fills square without distortion */
+
+  border-radius: 12px;
+  margin-top: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: block;
 }
+
 
 /* 5. FUNDER CARDS */
 .funder-grid {
@@ -258,6 +263,47 @@ footer {
     background: var(--footer-bg); color: #666;
 }
 
+/* JOURNEY AHEAD */
+.carousel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.viewport {
+  position: relative;
+  width: 100%;
+}
+
+.slide {
+  display: none; /* hide by default */
+  gap: 16px;
+  align-items: start;
+}
+
+.slide.active {
+  display: block; /* only active slide shows */
+}
+
+.slide figure {
+  margin: 0;
+  max-width: 420px;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+}
+
+.arrow {
+  font-size: 24px;
+  padding: 10px 14px;
+  cursor: pointer;
+  user-select: none;
+}
+
 /* 8. DARK MODE */
 @media (prefers-color-scheme: dark) {
     body { background: #1a1a1a; color: #f4f4f9; }
@@ -274,10 +320,15 @@ footer {
     .event-details { display: flex; flex-direction: column; gap: 8px; border-radius: 15px; }
 }
 
-/* MOBILE FIX: Ensure it doesn't take up too much screen space */
 @media (max-width: 600px) {
     .header-logo-circle { width: 50px; height: 50px; }
     .event-details { font-size: 0.75rem; padding: 0.4rem 0.8rem; }
+}
+
+@media (max-width: 800px) {
+  .slide.active {
+    flex-direction: column;
+  }
 }
 
 /* 10. ANIMATIONS */

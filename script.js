@@ -34,8 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Stripe Success Message ---
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('session') === 'success') {
-        alert("Thank you for your tea-rrific support! ☕");
-        const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+        // Show the alert first
+        alert("Thank you for your tea-rrific support! ☕ Your donation helps us keep the community connected.");
+        
+        // Clean the URL
+        const cleanUrl = window.location.pathname; 
         window.history.replaceState({}, document.title, cleanUrl);
     }
 

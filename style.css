@@ -8,7 +8,7 @@
     --page-bg: #120d08;            /* Keeps the whole page dark */
     --funder-bg: #1e160e;          /* Card background */
     --text-main: #f5ede0;          /* Steamed Milk (Easy to read) */
-    --text-white: #f5ede0;         /* Consistent off-white for all light text */
+    --text-white: #e0e0e0;         /* Consistent off-white for all light text */
     --footer-bg: #0b0805;          /* Even deeper finish */
     
     /* New Nature Accent (Can be used for borders) */
@@ -160,7 +160,7 @@ h2 { color: var(--text-white); margin-top: 0; }
 
 .tab-btn {
     background: var(--tab-bg);
-    color: var(--primary-brown);
+    color: var(--accent-tan);
     border: none;
     padding: 10px 20px;
     cursor: pointer;
@@ -298,10 +298,27 @@ footer {
 }
 
 .arrow {
-  font-size: 24px;
-  padding: 10px 14px;
-  cursor: pointer;
-  user-select: none;
+    background: rgba(255, 255, 255, 0.05) !important; /* Semi-transparent */
+    color: var(--accent-tan) !important;
+    border: 1px solid rgba(244, 180, 26, 0.3) !important; /* Subtle gold border */
+    width: 10px;
+    height: 75px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none !important; /* Remove the heavy 3D effect for navigation */
+    transition: all 0.3s ease !important;
+}
+
+.arrow:hover {
+    background: var(--accent-tan) !important;
+    color: var(--primary-brown) !important;
+    transform: scale(1.1);
+}
+
+.arrow:active {
+    transform: scale(0.9);
 }
 
 /* 8. DARK MODE */

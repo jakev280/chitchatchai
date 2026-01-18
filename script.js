@@ -1,60 +1,19 @@
-const button = document.getElementById("theme-toggle");
-const body = document.body;
-const form = document.querySelector("form");
-
-function initCarousel(scope = document) {
-  const carousel = scope.querySelector("#highlightsCarousel");
-  if (!carousel) return; // this year might not have a carousel
-
-  const slides = Array.from(carousel.querySelectorAll(".slide"));
-  const prevBtn = carousel.querySelector(".prev");
-  const nextBtn = carousel.querySelector(".next");
-
-  if (!slides.length || !prevBtn || !nextBtn) {
-    console.warn("Carousel found but missing slides/buttons.");
-    return;
-  }
-
-  // Find active slide or default to first
-  let currentIndex = slides.findIndex(s => s.classList.contains("active"));
-  if (currentIndex === -1) currentIndex = 0;
-
-  // Ensure only one active
-  slides.forEach((s, i) => s.classList.toggle("active", i === currentIndex));
-
-  function showSlide(newIndex) {
-    slides[currentIndex].classList.remove("active");
-    currentIndex = (newIndex + slides.length) % slides.length; // wrap
-    slides[currentIndex].classList.add("active");
-  }
-
-  // Use onclick so re-initializing doesn't stack multiple listeners
-  prevBtn.onclick = () => showSlide(currentIndex - 1);
-  nextBtn.onclick = () => showSlide(currentIndex + 1);
-}
-
+// --- 1. Master Page Initializer ---
 document.addEventListener('DOMContentLoaded', () => {
+    // --- Journey Logic ---
     const tabButtons = document.querySelectorAll('.tab-btn');
     const target = document.getElementById('journey-content-target');
 
-    /**
-     * The core logic to fetch and display the year content
-     */
     async function switchYear(yearId) {
-        // 1. Visual feedback: Dim the current content
+        if (!target) return;
         target.style.opacity = '0.5';
-        
         try {
-            // 2. Fetch the small HTML snippet
             const response = await fetch(`components/${yearId}.html`);
             if (!response.ok) throw new Error('File not found');
             const html = await response.text();
-            
-            // 3. Inject the new HTML and restore opacity
             target.innerHTML = html;
             target.style.opacity = '1';
             initCarousel(target);
-            
         } catch (error) {
             console.error("Fetch error:", error);
             target.innerHTML = "<p>Content is being updated. Please check back soon!</p>";
@@ -62,94 +21,135 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    /**
-     * Setup Button Clicks
-     */
     tabButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Remove 'active' class from all buttons and add to the clicked one
             tabButtons.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
-
-            // Get the year ID (e.g., 'year2021') from the onclick or data attribute
-            // If you use data-year="year2021" in your HTML:
-            const yearId = button.getAttribute('data-year');
-            switchYear(yearId);
+            switchYear(button.getAttribute('data-year'));
         });
     });
 
-    // Load the most recent year by default
-    switchYear('year2024');
+    switchYear('year2024'); // Default load
+
+    // --- Stripe Success Message ---
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('session') === 'success') {
+        alert("Thank you for your tea-rrific support! ☕");
+        const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+        window.history.replaceState({}, document.title, cleanUrl);
+    }
+
+    // --- Form Listener ---
+    setupFormListener();
 });
 
+// --- 2. Donation & Chips Logic ---
+const chips = document.querySelectorAll('.chip');
+const amountInput = document.getElementById('donation-amount');
+const donateBtn = document.getElementById('donate-btn');
+const statusMsg = document.getElementById('donation-status');
+const customContainer = document.getElementById('custom-amount-container');
 
-function toggleFunder(card) {
-    // This toggles the 'is-expanded' class on the card you clicked
-    card.classList.toggle('is-expanded');
+chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+        // 1. Update Visuals
+        chips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+
+        // 2. Update Value
+        if (chip.id === 'custom-chip') {
+            if (customContainer) customContainer.style.display = 'flex';
+            amountInput.focus();
+        } else {
+            if (customContainer) customContainer.style.display = 'none';
+            amountInput.value = chip.getAttribute('data-amount');
+        }
+    });
+});
+
+// If they type a number, de-select the chips
+amountInput?.addEventListener('input', () => {
+    chips.forEach(c => c.classList.remove('active'));
+});
+
+amountInput?.addEventListener('input', () => {
+    chips.forEach(c => c.classList.remove('active'));
+});
+
+if (donateBtn) {
+    donateBtn.addEventListener('click', async () => {
+        donateBtn.disabled = true;
+        statusMsg.style.display = 'block';
+        try {
+            const response = await fetch('https://chitchatchai-backend.onrender.com/create-checkout-session', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ amount: parseInt(amountInput.value) }),
+            });
+            const session = await response.json();
+            if (session.url) window.location.href = session.url;
+            else throw new Error(session.error);
+        } catch (error) {
+            alert('Server warming up! Try again in 30 seconds.');
+            donateBtn.disabled = false;
+            statusMsg.style.display = 'none';
+        }
+    });
 }
+
+// --- 3. UI Helpers (Carousel, Funder, Form) ---
+function initCarousel(scope = document) {
+    const carousel = scope.querySelector("#highlightsCarousel");
+    if (!carousel) return;
+    const slides = Array.from(carousel.querySelectorAll(".slide"));
+    const prevBtn = carousel.querySelector(".prev");
+    const nextBtn = carousel.querySelector(".next");
+    if (!slides.length || !prevBtn || !nextBtn) return;
+
+    let currentIndex = slides.findIndex(s => s.classList.contains("active"));
+    if (currentIndex === -1) currentIndex = 0;
+
+    function showSlide(newIndex) {
+        slides[currentIndex].classList.remove("active");
+        currentIndex = (newIndex + slides.length) % slides.length;
+        slides[currentIndex].classList.add("active");
+    }
+    prevBtn.onclick = () => showSlide(currentIndex - 1);
+    nextBtn.onclick = () => showSlide(currentIndex + 1);
+}
+
+function toggleFunder(card) { card.classList.toggle('is-expanded'); }
 
 function toggleContactForm() {
     const formContainer = document.getElementById('contactFormContainer');
+    if (!formContainer) return;
     const isOpening = !formContainer.classList.contains('is-visible');
-    
     formContainer.classList.toggle('is-visible');
-    
     if (isOpening) {
-        // Wait for the animation to start, then scroll
-        setTimeout(() => {
-            formContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 100);
+        setTimeout(() => formContainer.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
     }
 }
 
 function setupFormListener() {
     const form = document.querySelector("form");
     if (!form) return;
-
     form.onsubmit = async (e) => {
-        e.preventDefault(); 
-        
-        const formData = new FormData(form);
+        e.preventDefault();
         const response = await fetch(form.action, {
             method: 'POST',
-            body: formData,
+            body: new FormData(form),
             headers: { 'Accept': 'application/json' }
         });
-
         if (response.ok) {
-            // 1. Save the original form HTML
             const originalFormHTML = form.innerHTML;
-
-            // 2. Show the success message (REMOVED EMOJI)
-            form.innerHTML = `
-            <div class="success-message" style="text-align: center; padding: 2rem; animation: fadeIn 0.5s;">
-                <h2 style="color: white; margin-bottom: 0.5rem;">Message Sent!</h2>
-                <p style="color: rgba(255,255,255,0.9); margin-bottom: 2rem;">
-                    Thanks for reaching out. We'll be in touch soon!
-                </p>
-                
-                <button type="button" class="button" id="resetForm">
-                    Send another message
-                </button>
-            </div>
-            `;
-
-            // 3. Logic to restore the form when the button is clicked
+            form.innerHTML = `<div class="success-message" style="text-align: center; padding: 2rem;">
+                <h2>Message Sent!</h2><p>We'll be in touch soon!</p>
+                <button type="button" class="button" id="resetForm">Send another</button></div>`;
             document.getElementById('resetForm').onclick = () => {
                 form.innerHTML = originalFormHTML;
-                
-                // Clear the fields so it's a fresh start
-                form.reset(); 
-                
-                // RE-ATTACH: This ensures the 'Send Message' button works again
-                setupFormListener(); 
+                form.reset();
+                setupFormListener();
             };
-        } else {
-            alert("Oops! There was a problem. Please try again.");
-        }
+        } else { alert("Oops! Try again."); }
     };
 }
-
-// Run it once when the page loads
-setupFormListener();
-

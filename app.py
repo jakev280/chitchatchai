@@ -13,7 +13,7 @@ CORS(app)
 # --- SMART URL SWITCH ---
 # If RENDER is in the environment, use GitHub. Otherwise, use localhost.
 IS_RENDER = os.environ.get('RENDER')
-BASE_URL = "https://jakev.github.io/chitchatchai" if IS_RENDER else "http://localhost:5000"
+BASE_URL = "https://jakev.github.io/chitchatchai/" if IS_RENDER else "http://localhost:5000"
 
 @app.route('/create-checkout-session', methods=['POST'])
 def create_checkout_session():

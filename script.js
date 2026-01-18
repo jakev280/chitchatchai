@@ -35,11 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('session') === 'success') {
         // Show the alert first
-        alert("Thank you for your tea-rrific support! ☕ Your donation helps us keep the community connected.");
+        alert("Thank you for your tea-rrific support! Your donation helps us keep the community connected.");
         
-        // Clean the URL
-        const cleanUrl = window.location.pathname; 
-        window.history.replaceState({}, document.title, cleanUrl);
+    const newUrl = window.location.pathname; 
+    window.history.replaceState({}, document.title, newUrl);
+
     }
 
     // --- Form Listener ---

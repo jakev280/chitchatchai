@@ -17,7 +17,7 @@
         <span class="tagline-break">one cup of tea at a time!</span>
       </p>
       <div class="event-details">
-        <span class="detail-item"><strong>📅 Mon:</strong> 11am–1pm</span>
+        <span class="detail-item"><strong>📅 Mon:</strong> 9.30am–11am</span>
         <span class="detail-item"><strong>📍 St Margarets Centre</strong></span>
       </div>
     </div>
@@ -26,9 +26,24 @@
   <img src="images/2022-2.png" alt="Chit Chat Chai 2021 Session" class="header-main-img">
 
   <section class="tabs-section">
-    <h2>What We Do</h2>
-    <p>ChitChatChai is a community-led initiative supporting refugee and migrant women through informal English practice, shared tea, and confidence-building activities.</p>
-    
+    <div class="card" style="text-align: center">
+      <h3 style="margin-top: 0;">Visit Us</h3>
+      <p>We’d love to see you! Come find us at <strong>St Margaret’s Centre</strong> every Monday.</p>
+      
+      <div style="padding: 15px; border-radius: 8px; margin: 15px 0;">
+        <p style="margin: 0;">
+          <strong>9:30am – 11am:</strong> Informal English Classes<br>
+          <strong>11am – 1pm:</strong> Community Cafe (Tea & Bakes)
+        </p>
+      </div>
+
+      <a href="https://www.google.com/maps/search/?api=1&query=St+Margarets+Centre+Brantingham+Rd+Manchester" 
+        target="_blank" 
+        style="display: inline-block; color: #6772e5; font-weight: bold; text-decoration: none; padding: 8px 16px; border: 1px solid #6772e5; border-radius: 20px; transition: 0.3s;">
+        📍 Open in Google Maps
+      </a>
+    </div>
+
     <h2>Our Journey Through the Years</h2>
     
     <div class="tab-container">
@@ -97,8 +112,13 @@
     </div>
   </section>
 
+
+
   <section class="contact-section">
-    <div class="contact-trigger" style="text-align: center;">
+    <div class="card" style="text-align: center; margin-bottom: 40px;">
+    <h2>Contact Us</h2>
+    <p>Or just swing by for a friendly cuppa — we'd love to meet you.</p>
+
       <button class="push-button" onclick="toggleContactForm()">
         <span class="button-icon">✉️</span> Send us a Message
       </button>
@@ -123,6 +143,30 @@
         </form>
       </div>
     </div>
+  </section>
+
+  <section class="donation-section">
+    <div class="card" style="text-align: center; margin-bottom: 40px;">
+      <h2>Support Us</h2>
+      <p>Your contributions help us keep the tea brewing and the community growing</p>
+      
+      <div class="donation-chips" style="margin: 20px 0; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+        <button type="button" class="chip" data-amount="5">£5</button>
+        <button type="button" class="chip active" data-amount="10">£10</button>
+        <button type="button" class="chip" data-amount="20">£20</button>
+      </div>
+
+      <input type="hidden" id="donation-amount" value="10">
+
+      <button id="donate-btn" class="push-button">
+        <span class="button-icon">💖</span> Donate Now
+      </button>
+      
+      <p id="donation-status" style="display: none; color: #666; margin-top: 10px; font-style: italic;">
+        Waking up the server...
+      </p>
+    </div>
+  </section>
 
   <footer>
     <p>© ChitChatChai – Community initiative</p>

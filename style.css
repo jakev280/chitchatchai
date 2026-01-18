@@ -1,4 +1,4 @@
-/* 0. BRAND COLOR TEMPLATE */
+/* BRAND COLOR TEMPLATE */
 :root {
 /* Nature-Focused Dark Theme Mapping */
     --primary-brown: #120d08;      /* Deep Peppercorn (Nature's Dark) */
@@ -15,7 +15,7 @@
     --nature-green: #4a5d23;
 }
 
-/* 1. RESET & BASE STYLES */
+/* BASE STYLES */
 * { box-sizing: border-box; }
 
 body {
@@ -27,7 +27,7 @@ body {
     transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* 2. HEADER & TYPOGRAPHY */
+/* HEADER & TYPOGRAPHY */
 header {
     background: var(--primary-brown);
     color: var(--text-white);
@@ -66,7 +66,7 @@ header h1::after {
     margin-bottom: 25px;
 }
 
-/* 1. STICKY HEADER LOGIC */
+/* STICKY HEADER LOGIC */
 .sticky-header {
     position: sticky;
     top: 0;
@@ -85,7 +85,7 @@ header h1::after {
     align-items: center;
 }
 
-/* 2. CIRCULAR LOGO (Same style as founders) */
+/* CIRCULAR LOGO (Same style as founders) */
 .header-logo-circle {
     width: 60px; 
     height: 60px;
@@ -103,7 +103,7 @@ header h1::after {
     color: var(--accent-tan); /* Optional: uses your brand gold for the second half */
 }
 
-/* 3. COMPACT EVENT DETAILS FOR STICKY BAR */
+/* COMPACT EVENT DETAILS FOR STICKY BAR */
 .event-details {
     background: rgba(0, 0, 0, 0.2);
     padding: 0.5rem 1.2rem;
@@ -111,7 +111,7 @@ header h1::after {
     font-size: 0.9rem;
 }
 
-/* 4. ADJUST BANNER MARGIN */
+/* ADJUST BANNER MARGIN */
 .header-main-img {
     margin-top: 0; /* Ensures banner sits flush under sticky header */
     border-radius: 0; /* Keep it sharp or adjust as preferred */
@@ -131,7 +131,7 @@ header h1::after {
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-/* 3. LAYOUT & CARDS */
+/* LAYOUT & CARDS */
 section {
     max-width: 900px;
     margin: auto;
@@ -149,7 +149,7 @@ h2 { color: var(--text-white); margin-top: 0; }
     color: var(--text-white);
 }
 
-/* 4. TABS (What We Do) */
+/* TABS (What We Do) */
 .tab-container {
     display: flex;
     gap: 10px;
@@ -189,7 +189,7 @@ h2 { color: var(--text-white); margin-top: 0; }
 }
 
 
-/* 5. FUNDER CARDS */
+/* FUNDER CARDS */
 .funder-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -225,7 +225,7 @@ h2 { color: var(--text-white); margin-top: 0; }
     margin-top: 10px;
 }
 
-/* 6. CONTACT FORM & BUTTONS */
+/* CONTACT FORM & BUTTONS */
 .push-button {
     background: var(--primary-brown); color: var(--text-white);
     border: none; padding: 1.2rem 2.5rem;
@@ -257,7 +257,7 @@ h2 { color: var(--text-white); margin-top: 0; }
     border-radius: 6px; font-weight: bold; text-decoration: none;
 }
 
-/* 7. FOOTER */
+/* FOOTER */
 footer {
     text-align: center; padding: 1.5rem;
     background: var(--footer-bg); color: #666;
@@ -321,7 +321,24 @@ footer {
     transform: scale(0.9);
 }
 
-/* 8. DARK MODE */
+.chip {
+    padding: 10px 20px;
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    background: white;
+    cursor: pointer;
+    font-weight: bold;
+    color: black;
+    transition: all 0.2s ease;
+}
+
+.chip.active {
+    border-color: #6772e5;
+    background: #f0f2ff;
+    color: #6772e5;
+}
+
+/* DARK MODE */
 @media (prefers-color-scheme: dark) {
     body { background: #1a1a1a; color: #f4f4f9; }
     .card, .funder-card { background: #2d2d2d; }
@@ -329,7 +346,7 @@ footer {
     footer { background: #111; color: #888; }
 }
 
-/* 9. MOBILE ADJUSTMENTS */
+/* MOBILE ADJUSTMENTS */
 @media (max-width: 600px) {
     header h1 { font-size: 2rem; letter-spacing: 1px; }
     header h1::after { width: 90%; max-width: 300px; }
@@ -348,7 +365,7 @@ footer {
   }
 }
 
-/* 10. ANIMATIONS */
+/* ANIMATIONS */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }

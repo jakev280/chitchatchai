@@ -8,7 +8,12 @@ load_dotenv()
 stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
 
 app = Flask(__name__)
-CORS(app) # Allows your GitHub site to talk to this Render server
+CORS(app) 
+
+# --- SMART URL SWITCH ---
+# If RENDER is in the environment, use GitHub. Otherwise, use localhost.
+IS_RENDER = os.environ.get('RENDER')
+BASE_URL = "https://jakev.github.io/chitchatchai" if IS_RENDER else "http://localhost:5000"
 
 @app.route('/create-checkout-session', methods=['POST'])
 def create_checkout_session():
@@ -30,9 +35,9 @@ def create_checkout_session():
             }],
             mode='payment',
             submit_type='donate',
-            # Replace with your actual GitHub Pages URL
-            success_url='https://jakev.github.io/chitchatchai/?session=success',
-            cancel_url='https://jakev.github.io/chitchatchai/',
+            # Now these will automatically point to localhost when you're working at home!
+            success_url=f'{BASE_URL}/?session=success',
+            cancel_url=f'{BASE_URL}/',
         )
 
         return jsonify({'url': checkout_session.url})
@@ -41,6 +46,5 @@ def create_checkout_session():
         return jsonify(error=str(e)), 403
 
 if __name__ == '__main__':
-    # Render uses the PORT env variable
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)

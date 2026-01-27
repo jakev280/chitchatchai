@@ -1,5 +1,14 @@
+const API_BASE_URL = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+    ? "http://localhost:5000" 
+    : "https://chitchatchai-backend.onrender.com";
+
 // --- 1. Master Page Initializer ---
 document.addEventListener('DOMContentLoaded', () => {
+    
+    console.log("Nudging the backend...");
+    fetch(API_BASE_URL, { mode: 'no-cors' })
+        .then(() => console.log("Backend nudged at:", API_BASE_URL));
+
     // --- Journey Logic ---
     const tabButtons = document.querySelectorAll('.tab-btn');
     const target = document.getElementById('journey-content-target');
@@ -75,16 +84,12 @@ amountInput?.addEventListener('input', () => {
     chips.forEach(c => c.classList.remove('active'));
 });
 
-amountInput?.addEventListener('input', () => {
-    chips.forEach(c => c.classList.remove('active'));
-});
-
 if (donateBtn) {
     donateBtn.addEventListener('click', async () => {
         donateBtn.disabled = true;
         statusMsg.style.display = 'block';
         try {
-            const response = await fetch('https://chitchatchai-backend.onrender.com/create-checkout-session', {
+            const response = await fetch('${API_BASE_URL}/create-checkout-session', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ amount: parseInt(amountInput.value) }),

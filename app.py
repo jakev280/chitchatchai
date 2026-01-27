@@ -15,6 +15,10 @@ CORS(app)
 IS_RENDER = os.environ.get('RENDER')
 BASE_URL = "https://jakev.github.io/chitchatchai/index.html" if IS_RENDER else "http://localhost:5000"
 
+@app.route('/')
+def home():
+    return "Server is awake!", 200
+
 @app.route('/create-checkout-session', methods=['POST'])
 def create_checkout_session():
     try:

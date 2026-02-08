@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    switchYear('year2024'); // Default load
+    switchYear('year2025'); // Default load
 
     // --- Stripe Success Message ---
     const urlParams = new URLSearchParams(window.location.search);

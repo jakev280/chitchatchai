@@ -1,383 +1,438 @@
-/* BRAND COLOR TEMPLATE */
-:root {
-/* Nature-Focused Dark Theme Mapping */
-    --primary-brown: #120d08;      /* Deep Peppercorn (Nature's Dark) */
-    --primary-brown-dark: #000000; /* Shadow for deep depth */
-    --accent-tan: #f4b41a;         /* Turmeric Gold from your flyer */
-    --tab-bg: #1e160e;             /* Roasted Leaf (Darker tab) */
-    --page-bg: #120d08;            /* Keeps the whole page dark */
-    --funder-bg: #1e160e;          /* Card background */
-    --text-main: #f5ede0;          /* Steamed Milk (Easy to read) */
-    --text-white: #e0e0e0;         /* Consistent off-white for all light text */
-    --footer-bg: #0b0805;          /* Even deeper finish */
-    
-    /* New Nature Accent (Can be used for borders) */
-    --nature-green: #4a5d23;
+/* =========================================
+   Chit Chat Chai — Retro Poster stylesheet
+   ========================================= */
+
+:root{
+  /* Brand */
+  --accent-tan: #f4b41a;
+  --nature-green: #4a5d23;
+
+  /* Retro UI */
+  --ui-bg: hwb(210 9% 34%);  /* header bar bg */
+  --ui-surface: #ffffff;
+  --ui-ink: #0f172a;
+  --ui-muted: #181c22;
+  --ui-border: #0f172a;
+
+  --ui-radius: 18px;
+  --ui-shadow: 8px 8px 0 rgba(15,23,42,1);
+  --ui-shadow-accent: 8px 8px 0 rgba(244,180,26,1);
+
+  --container: 880px;
+
+  /* Background grid */
+  --paper: #fde3e1;
+  --grid-minor: rgba(15,23,42,0.08);
+  --grid-major: rgba(15,23,42,0.14);
+  --grid-size: 26px;
+  --grid-major-mult: 5;
 }
 
-/* BASE STYLES */
-* { box-sizing: border-box; }
+/* BASE */
+*{ box-sizing: border-box; }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-    background: var(--page-bg);
-    color: var(--text-main);
-    line-height: 1.6;
-    transition: background 0.3s ease, color 0.3s ease;
+body{
+  margin: 0;
+  color: var(--ui-ink);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  line-height: 1.65;
+
+  /* Pastel grid background */
+  background:
+    linear-gradient(to right, var(--grid-major) 0 2px, transparent 2px)
+      0 0 / calc(var(--grid-size) * var(--grid-major-mult)) 100%,
+    linear-gradient(to bottom, var(--grid-major) 0 2px, transparent 2px)
+      0 0 / 100% calc(var(--grid-size) * var(--grid-major-mult)),
+    linear-gradient(to right, var(--grid-minor) 0 1px, transparent 1px)
+      0 0 / var(--grid-size) 100%,
+    linear-gradient(to bottom, var(--grid-minor) 0 1px, transparent 1px)
+      0 0 / 100% var(--grid-size),
+    radial-gradient(900px 600px at 15% 10%, rgba(244,180,26,0.12), transparent 60%),
+    radial-gradient(800px 520px at 85% 15%, rgba(74,93,35,0.10), transparent 55%),
+    var(--paper);
+
+  background-attachment: fixed;
 }
 
-/* HEADER & TYPOGRAPHY */
-header {
-    background: var(--primary-brown);
-    color: var(--text-white);
-    padding: 2rem 1rem;
-    text-align: center;
-    overflow: hidden;
+section{
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 3.5rem;
-    font-weight: 800;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+/* TYPOGRAPHY */
+h2{
+  margin: 0 0 14px;
+  color: var(--ui-ink);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
 }
 
-header h1::after {
-    content: '';
-    display: block;
-    width: 80%;
-    max-width: 500px;
-    height: 4px;
-    background: var(--accent-tan);
-    margin: 10px auto 0;
-    border-radius: 2px;
+/* STICKY HEADER */
+.sticky-header{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--ui-bg);
+  border-bottom: 2px solid var(--ui-border);
 }
 
-.header-main-img {
-    width: 100%;
-    height: 500px;
-    object-fit: cover;
-    object-position: 50% 65%;
-    border-radius: 0 0 20px 20px;
-    display: block;
-    margin-bottom: 25px;
+.header-content{
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 14px 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
 }
 
-/* STICKY HEADER LOGIC */
-.sticky-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000; /* Keeps it above all other content */
-    background: var(--primary-brown);
-    padding: 10px 1rem;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    border-bottom: 2px solid var(--nature-green);
+.header-logo-circle{
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  background: #fff;
+  padding: 8px;
+  border-radius: 50%;
+  border: 2px solid var(--ui-border);
 }
 
-.header-content {
-    max-width: 900px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.header-tagline{
+  margin: 0;
+  color: var(--ui-muted);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
 }
 
-/* CIRCULAR LOGO (Same style as founders) */
-.header-logo-circle {
-    width: 60px; 
-    height: 60px;
-    object-fit: contain; 
-    background: white; /* Matches founders logo background */
-    padding: 8px; 
-    border-radius: 50%;
-    border: 2px solid var(--accent-tan);
+.tagline-break{
+  display: block;
+  margin-top: 6px;
+  color: var(--ui-ink);
+  font-size: 0.9em;
 }
 
-.tagline-break {
-    display: block; /* Forces the span onto a new line */
-    margin-top: 5px; /* Adds a tiny bit of breathing room between lines */
-    font-size: 0.9em; /* Optional: makes the second line slightly more subtle */
-    color: var(--accent-tan); /* Optional: uses your brand gold for the second half */
+/* Event details pill (2-line stack) */
+.event-details{
+  background: #fff;
+  border: 2px solid var(--ui-border);
+  color: var(--ui-ink);
+  border-radius: 999px;
+  padding: 10px 14px;
+  box-shadow: var(--ui-shadow);
+  font-size: 0.9rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  line-height: 1.15;
 }
 
-/* COMPACT EVENT DETAILS FOR STICKY BAR */
-.event-details {
-    background: rgba(0, 0, 0, 0.2);
-    padding: 0.5rem 1.2rem;
-    border-radius: 50px;
-    font-size: 0.9rem;
+.event-details .detail-item{ display: block; }
+
+/* HERO IMAGE */
+.header-main-img{
+  max-width: var(--container);
+  margin: 18px auto 0;
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--ui-radius);
+  border: 2px solid var(--ui-border);
+  box-shadow: var(--ui-shadow);
 }
 
-/* ADJUST BANNER MARGIN */
-.header-main-img {
-    margin-top: 0; /* Ensures banner sits flush under sticky header */
-    border-radius: 0; /* Keep it sharp or adjust as preferred */
+/* CARD */
+.card{
+  background: var(--ui-surface);
+  color: var(--ui-ink);
+  border: 2px solid var(--ui-border);
+  border-radius: var(--ui-radius);
+  box-shadow: var(--ui-shadow-accent);
+  padding: 1.5rem;
 }
 
-.tagline {
-    font-size: 1.2rem;
-    font-style: italic;
-    margin-bottom: 1.5rem;
+.card p{
+  color: var(--ui-muted);
+  margin-top: 0;
 }
 
-.event-details {
-    background: rgba(0, 0, 0, 0.15);
-    display: inline-block;
-    padding: 1rem 2rem;
-    border-radius: 50px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+/* TABS */
+.tab-container{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
 }
 
-/* LAYOUT & CARDS */
-section {
-    max-width: 900px;
-    margin: auto;
-    padding: 2rem 1rem;
+.tab-btn{
+  background: #fff;
+  color: var(--ui-ink);
+  border: 2px solid var(--ui-border);
+  border-radius: 999px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
-h2 { color: var(--text-white); margin-top: 0; }
+.tab-btn.active{ background: rgba(244,180,26,0.18); }
+.tab-content{ display: none; }
+.tab-content.active{ display: block; }
 
-.card {
-    background: var(--primary-brown);
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    color: var(--text-white);
-}
-
-/* TABS (What We Do) */
-.tab-container {
-    display: flex;
-    gap: 10px;
-    margin-bottom: -1px;
-    overflow-x: auto;
-    padding-bottom: 5px;
-}
-
-.tab-btn {
-    background: var(--tab-bg);
-    color: var(--accent-tan);
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 8px 8px 0 0;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.tab-btn.active { background: var(--primary-brown); color: var(--text-white); }
-
-.tab-content { display: none; }
-.tab-content.active { display: block; }
-
-.journey-image {
+/* Journey images inside loaded components */
+.journey-image{
   width: 100%;
   max-width: 600px;
-  aspect-ratio: 1 / 1;   /* 👈 always square */
+  aspect-ratio: 1 / 1;
   height: auto;
-
-  object-fit: cover;    /* 👈 fills square without distortion */
-
-  border-radius: 12px;
-  margin-top: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  object-fit: cover;
+  border-radius: 16px;
   display: block;
+  margin-top: 14px;
 }
 
-
-/* FUNDER CARDS */
-.funder-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+/* FUNDER / CREW CARDS */
+.funder-grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
 }
 
-.funder-card {
-    background: var(--funder-bg);
-    border-radius: 12px;
-    padding: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    overflow: hidden;
-    color: var(--text-white);
+.funder-card{
+  background: #fff;
+  color: var(--ui-ink);
+  border: 2px solid var(--ui-border);
+  border-radius: var(--ui-radius);
+  box-shadow: 6px 6px 0 rgba(15,23,42,1);
+  padding: 20px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.15s ease, border-color 0.15s ease;
 }
 
-.funder-card:hover { transform: translateY(-3px); border: 2px solid var(--accent-tan); }
-
-.funder-logo {
-    width: 60px; height: 60px;
-    object-fit: contain; background: white;
-    padding: 5px; border-radius: 50%;
+.funder-card:hover{
+  transform: translateY(-2px);
+  border-color: var(--accent-tan);
 }
 
-.funder-details {
-    max-height: 0; opacity: 0;
-    transition: all 0.4s ease;
+.funder-card:focus-visible{
+  outline: none;
+  border-color: var(--accent-tan);
 }
 
-.funder-card.is-expanded .funder-details {
-    max-height: 200px; opacity: 1;
-    padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.2);
-    margin-top: 10px;
+.funder-logo{
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  background: #fff;
+  padding: 5px;
+  border-radius: 50%;
+  border: 2px solid var(--ui-border);
 }
 
-/* CONTACT FORM & BUTTONS */
-.push-button {
-    width: 280px;
-    background: var(--primary-brown); 
-    color: var(--text-white);
-    border: none; 
-    padding: 1.2rem 2.5rem;
-    font-size: 1rem; 
-    font-weight: bold;
-    border-radius: 50px; 
-    cursor: pointer;
-    box-shadow: 0 6px 0 var(--primary-brown-dark);
-    transition: all 0.1s ease;
-    
-    display: flex; 
-    margin: 20px auto; 
-    
-    align-items: center; 
-    justify-content: center; 
-    gap: 10px;
+/* Expand behaviour */
+.funder-details{
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: max-height 0.35s ease, opacity 0.25s ease, padding 0.25s ease;
 }
 
-.push-button:active { transform: translateY(6px); box-shadow: 0 0 0 var(--primary-brown-dark); }
-
-.contact-form-card {
-    max-height: 0; opacity: 0; overflow: hidden;
-    transition: all 0.5s ease; max-width: 600px; margin: 0 auto;
+.funder-card.is-expanded .funder-details{
+  max-height: 900px;
+  opacity: 1;
+  padding-top: 14px;
+  padding-bottom: 14px;
 }
 
-.contact-form-card.is-visible { max-height: 800px; opacity: 1; padding-top: 20px; }
-
-.contact-form-card label { display: block; margin-bottom: 1rem; font-weight: bold; color: var(--text-white); }
-
-.contact-form-card input, .contact-form-card textarea {
-    width: 100%; padding: 12px; margin-top: 5px; border-radius: 6px; border: 1px solid #ddd;
+.funder-details > div{
+  padding-bottom: 8px;
+  row-gap: 8px;
 }
 
-.button {
-    display: inline-block; background: var(--text-white);
-    color: var(--primary-brown) !important; padding: 0.6rem 1.2rem;
-    border-radius: 6px; font-weight: bold; text-decoration: none;
+/* Desktop: independent column flow */
+@media (min-width: 900px){
+  .funder-grid{
+    display: block;
+    column-count: 2;
+    column-gap: 20px;
+  }
+  .funder-card{
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 20px 0;
+    break-inside: avoid;
+  }
 }
 
-/* FOOTER */
-footer {
-    text-align: center; padding: 1.5rem;
-    background: var(--footer-bg); color: #666;
+/* BUTTONS */
+.push-button{
+  width: min(360px, 100%);
+  background: var(--accent-tan);
+  color: var(--ui-ink);
+  border: 2px solid var(--ui-border);
+  box-shadow: 4px 4px 0 rgba(15,23,42,1);
+  border-radius: 999px;
+  font-family: inherit;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 14px 18px;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+  text-decoration: none;
 }
 
-/* JOURNEY AHEAD */
-.carousel {
+.push-button:hover{
+  filter: brightness(0.98);
+  transform: translateY(-1px);
+}
+
+.push-button:active{
+  transform: translateY(0px);
+  box-shadow: 2px 2px 0 rgba(15,23,42,1);
+}
+
+/* Tag pills under crew cards */
+.button{
+  display: inline-block;
+  background: rgba(244,180,26,0.18);
+  color: var(--ui-ink);
+  border: 2px solid var(--ui-border);
+  border-radius: 999px;
+  font-weight: 900;
+  text-decoration: none;
+  padding: 0.4rem 0.8rem;
+}
+
+/* Donation chips */
+.chip{
+  padding: 10px 20px;
+  border: 2px solid var(--ui-border);
+  border-radius: 999px;
+  background: #fff;
+  cursor: pointer;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.chip.active{ background: rgba(244,180,26,0.18); }
+
+/* CONTACT FORM */
+.contact-form-card{
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.35s ease;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-form-card.is-visible{
+  max-height: 1200px;
+  opacity: 1;
+  padding-top: 20px;
+}
+
+.contact-form-card label{
+  display: block;
+  margin-bottom: 1rem;
+  font-weight: 900;
+  color: var(--ui-ink);
+}
+
+.contact-form-card input,
+.contact-form-card textarea{
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  border-radius: 12px;
+  border: 2px solid var(--ui-border);
+}
+
+/* Carousel controls */
+.carousel{
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.viewport {
-  position: relative;
-  width: 100%;
+.viewport{ width: 100%; }
+.slide{ display: none; }
+.slide.active{ display: block; }
+
+.arrow{
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #fff;
+  border: 2px solid var(--ui-border);
+  color: var(--ui-ink);
+  cursor: pointer;
+  box-shadow: 3px 3px 0 rgba(15,23,42,1);
+  font-weight: 900;
 }
 
-.slide {
-  display: none; /* hide by default */
-  gap: 16px;
-  align-items: start;
+.arrow:hover{ transform: translateY(-1px); }
+.arrow:active{ transform: translateY(0px); box-shadow: 2px 2px 0 rgba(15,23,42,1); }
+
+/* FOOTER */
+footer{
+  text-align: center;
+  padding: 1.5rem;
+  background: transparent;
+  color: var(--ui-muted);
+  border-top: 2px solid rgba(15,23,42,0.15);
 }
 
-.slide.active {
-  display: block; /* only active slide shows */
+/* ACCESSIBILITY */
+:focus-visible{
+  outline: 3px solid rgba(244,180,26,0.75);
+  outline-offset: 3px;
+  border-radius: 12px;
 }
 
-.slide figure {
-  margin: 0;
-  max-width: 420px;
+/* INTERACTIVE SECTION: even spacing between the three cards */
+.interactive-section{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.slide img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 10px;
-}
-
-.arrow {
-    background: rgba(255, 255, 255, 0.05) !important; /* Semi-transparent */
-    color: var(--accent-tan) !important;
-    border: 1px solid rgba(244, 180, 26, 0.3) !important; /* Subtle gold border */
-    width: 10px;
-    height: 75px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
+/* MOBILE */
+@media (max-width: 700px){
+  .header-content{
+    flex-wrap: wrap;
     justify-content: center;
-    box-shadow: none !important; /* Remove the heavy 3D effect for navigation */
-    transition: all 0.3s ease !important;
-}
-
-.arrow:hover {
-    background: var(--accent-tan) !important;
-    color: var(--primary-brown) !important;
-    transform: scale(1.1);
-}
-
-.arrow:active {
-    transform: scale(0.9);
-}
-
-.chip {
-    padding: 10px 20px;
-    border: 2px solid #ddd;
-    border-radius: 25px;
-    background: white;
-    cursor: pointer;
-    font-weight: bold;
-    color: black;
-    transition: all 0.2s ease;
-}
-
-.chip.active {
-    border-color: #6772e5;
-    background: #f0f2ff;
-    color: #6772e5;
-}
-
-/* DARK MODE */
-@media (prefers-color-scheme: dark) {
-    body { background: #1a1a1a; color: #f4f4f9; }
-    .card, .funder-card { background: #2d2d2d; }
-    .funder-card.is-expanded { background: #3d3d3d; }
-    footer { background: #111; color: #888; }
-}
-
-/* MOBILE ADJUSTMENTS */
-@media (max-width: 600px) {
-    header h1 { font-size: 2rem; letter-spacing: 1px; }
-    header h1::after { width: 90%; max-width: 300px; }
-    .header-logo { height: 45px; }
-    .event-details { display: flex; flex-direction: column; gap: 8px; border-radius: 15px; }
-}
-
-@media (max-width: 600px) {
-    .header-logo-circle { width: 50px; height: 50px; }
-    .event-details { font-size: 0.75rem; padding: 0.4rem 0.8rem; }
-}
-
-@media (max-width: 800px) {
-  .slide.active {
-    flex-direction: column;
+    text-align: center;
+  }
+  .event-details{
+    width: 100%;
+    align-items: center;
+    text-align: center;
   }
 }
+/* Spacing edits for interactive section (funder cards) */
 
-/* ANIMATIONS */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+.interactive-section{
+  display: flex;
+  flex-direction: column;
+  gap: 24px; 
+}
+
+.interactive-section .card{
+  margin: 0 !important;  
 }

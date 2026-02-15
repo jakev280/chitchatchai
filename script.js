@@ -127,7 +127,9 @@ function initCarousel(scope = document) {
     nextBtn.onclick = () => showSlide(currentIndex + 1);
 }
 
-function toggleFunder(card) { card.classList.toggle('is-expanded'); }
+function toggleFunder(card) {
+  card.classList.toggle("is-expanded");
+}
 
 function toggleContactForm() {
     const formContainer = document.getElementById('contactFormContainer');
@@ -162,3 +164,4 @@ function setupFormListener() {
         } else { alert("Oops! Try again."); }
     };
 }
+

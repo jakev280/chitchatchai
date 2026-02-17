@@ -1,17 +1,15 @@
 /* BRAND COLOR TEMPLATE */
 :root {
-/* Nature-Focused Dark Theme Mapping */
-    --primary-brown: #120d08;      /* Deep Peppercorn (Nature's Dark) */
-    --primary-brown-dark: #000000; /* Shadow for deep depth */
-    --accent-tan: #f4b41a;         /* Turmeric Gold from your flyer */
-    --tab-bg: #1e160e;             /* Roasted Leaf (Darker tab) */
-    --page-bg: #120d08;            /* Keeps the whole page dark */
-    --funder-bg: #1e160e;          /* Card background */
-    --text-main: #f5ede0;          /* Steamed Milk (Easy to read) */
-    --text-white: #e0e0e0;         /* Consistent off-white for all light text */
-    --footer-bg: #0b0805;          /* Even deeper finish */
+    /* Backgrounds: Flipped to Light */
+    --primary-brown: #120d08;      /* Deep Peppercorn (Used for Header/Buttons) */
+    --accent-tan: #f4b41a;         /* Turmeric Gold */
+    --tab-bg: #f5ede0;             /* Subtle Tan for inactive tabs */
+    --page-bg: #fdfaf5;            /* Steamed Milk (Main Page Background) */
+    --funder-bg: #ffffff;          /* White for Cards */
     
-    /* New Nature Accent (Can be used for borders) */
+
+    --text-light: #f5ede0;         /* For text on dark elements like Footer/Header */
+    --footer-bg: #1e160e;          /* Kept dark for grounding */
     --nature-green: #4a5d23;
 }
 
@@ -22,7 +20,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     background: var(--page-bg);
-    color: var(--text-main);
+    color: var(--primary-brown);
     line-height: 1.6;
     transition: background 0.3s ease, color 0.3s ease;
 }
@@ -30,7 +28,7 @@ body {
 /* HEADER & TYPOGRAPHY */
 header {
     background: var(--primary-brown);
-    color: var(--text-white);
+    color: var(--text-light);
     padding: 2rem 1rem;
     text-align: center;
     overflow: hidden;
@@ -70,11 +68,12 @@ header h1::after {
 .sticky-header {
     position: sticky;
     top: 0;
-    z-index: 1000; /* Keeps it above all other content */
-    background: var(--primary-brown);
+    z-index: 1000;
+    background: var(--nature-green); 
+    color: #ffffff; 
     padding: 10px 1rem;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    border-bottom: 2px solid var(--nature-green);
+    border-bottom: 3px solid var(--accent-tan); 
 }
 
 .header-content {
@@ -138,15 +137,15 @@ section {
     padding: 2rem 1rem;
 }
 
-h2 { color: var(--text-white); margin-top: 0; }
+h2 { color: var(--primary-brown); margin-top: 0; }
 
 .card {
-    background: var(--primary-brown);
+    background: var(--funder-bg); 
+    color: var(--primary-brown);
     padding: 1.5rem;
     margin-bottom: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    color: var(--text-white);
 }
 
 /* TABS (What We Do) */
@@ -160,7 +159,7 @@ h2 { color: var(--text-white); margin-top: 0; }
 
 .tab-btn {
     background: var(--tab-bg);
-    color: var(--accent-tan);
+    color: var(--primary-brown);
     border: none;
     padding: 10px 20px;
     cursor: pointer;
@@ -169,7 +168,12 @@ h2 { color: var(--text-white); margin-top: 0; }
     transition: 0.3s;
 }
 
-.tab-btn.active { background: var(--primary-brown); color: var(--text-white); }
+.tab-btn.active { 
+    background: var(--tab-bg); 
+    color: var(--primary-brown); 
+    border: 2px solid var(--nature-green); 
+    outline: none; 
+}
 
 .tab-content { display: none; }
 .tab-content.active { display: block; }
@@ -197,13 +201,14 @@ h2 { color: var(--text-white); margin-top: 0; }
 }
 
 .funder-card {
-    background: var(--funder-bg);
+    background: var(--funder-bg); 
+    color: var(--primary-brown);
     border-radius: 12px;
     padding: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
     overflow: hidden;
-    color: var(--text-white);
+    border: 1px solid rgba(0,0,0,0.05);
 }
 
 .funder-card:hover { transform: translateY(-3px); border: 2px solid var(--accent-tan); }
@@ -230,15 +235,15 @@ h2 { color: var(--text-white); margin-top: 0; }
 .push-button {
     text-decoration: none;
     width: 280px;
-    background: var(--primary-brown); 
-    color: var(--text-white);
+    background: var(--nature-green); 
+    color: #ffffff;
     border: none; 
     padding: 1.2rem 2.5rem;
     font-size: 1rem; 
     font-weight: bold;
     border-radius: 50px; 
     cursor: pointer;
-    box-shadow: 0 6px 0 var(--primary-brown-dark);
+    box-shadow: 0 6px 0 var(--primary-brown);
     transition: all 0.1s ease;
     
     display: flex; 
@@ -249,7 +254,7 @@ h2 { color: var(--text-white); margin-top: 0; }
     gap: 10px;
 }
 
-.push-button:active { transform: translateY(6px); box-shadow: 0 0 0 var(--primary-brown-dark); }
+.push-button:active { transform: translateY(6px); box-shadow: 0 0 0 var(--primary-brown); }
 
 .contact-form-card {
     max-height: 0; opacity: 0; overflow: hidden;
@@ -258,22 +263,29 @@ h2 { color: var(--text-white); margin-top: 0; }
 
 .contact-form-card.is-visible { max-height: 800px; opacity: 1; padding-top: 20px; }
 
-.contact-form-card label { display: block; margin-bottom: 1rem; font-weight: bold; color: var(--text-white); }
+.contact-form-card label { display: block; margin-bottom: 1rem; font-weight: bold; color: var(--primary-brown); }
 
 .contact-form-card input, .contact-form-card textarea {
     width: 100%; padding: 12px; margin-top: 5px; border-radius: 6px; border: 1px solid #ddd;
 }
 
 .button {
-    display: inline-block; background: var(--text-white);
-    color: var(--primary-brown) !important; padding: 0.6rem 1.2rem;
+    display: inline-block; background: var(--primary-brown);
+    color: var(--page-bg) !important; padding: 0.6rem 1.2rem;
     border-radius: 6px; font-weight: bold; text-decoration: none;
 }
 
 /* FOOTER */
 footer {
-    text-align: center; padding: 1.5rem;
-    background: var(--footer-bg); color: #666;
+    text-align: center; 
+    padding: 1.5rem 1.5rem; 
+    background: var(--nature-green); 
+    color: #ffffff; 
+    border-top: 3px solid var(--accent-tan); 
+}
+
+footer strong {
+    color: var(--accent-tan); 
 }
 
 /* JOURNEY AHEAD */
@@ -351,13 +363,14 @@ footer {
     color: #6772e5;
 }
 
-/* DARK MODE */
+/* DARK MODE 
 @media (prefers-color-scheme: dark) {
     body { background: #1a1a1a; color: #f4f4f9; }
     .card, .funder-card { background: #2d2d2d; }
     .funder-card.is-expanded { background: #3d3d3d; }
     footer { background: #111; color: #888; }
 }
+*/
 
 /* MOBILE ADJUSTMENTS */
 @media (max-width: 600px) {

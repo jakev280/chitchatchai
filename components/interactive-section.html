@@ -1,0 +1,104 @@
+<section class="interactive-section">
+    <div class="card" style="text-align: center">
+        <h2 style="color: var(--nature-green); margin-bottom: 2rem;">
+            Visit Us
+        </h2>
+        <p>We’d love to see you! Come find us at <strong>St Margaret’s Centre</strong> every Monday.</p>
+        
+        <div style="padding: 15px; border-radius: 8px; margin: 15px 0;">
+        <p style="margin: 0;">
+            <strong>9:30am – 11am:</strong> Informal English Classes<br>
+            <strong>11am – 1pm:</strong> Community Cafe (Tea & Bakes)
+        </p>
+        </div>
+
+        <a href="https://www.google.com/maps/search/?api=1&query=St+Margarets+Centre+Brantingham+Rd+Manchester" 
+        target="_blank" 
+        class="push-button" 
+        style="text-decoration: none; display: inline-block;">
+        <span class="button-icon">📍</span> Open in Google Maps
+        </a>
+    </div>
+
+
+
+    <!-- Old code for a Donate Button - we can bring this back if we want to add a donation option in the future.
+        <div class="card" style="text-align: center; margin-bottom: 40px;">
+        <h2>Support Us</h2>
+        <p>Your contributions help us keep the tea brewing and the community growing</p>
+        
+        <div class="donation-chips" style="margin: 20px 0; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+            <button type="button" class="chip" data-amount="5">£5</button>
+            <button type="button" class="chip active" data-amount="10">£10</button>
+            <button type="button" class="chip" data-amount="20">£20</button>
+        </div>
+
+        <input type="hidden" id="donation-amount" value="10">
+
+        <button id="donate-btn" class="push-button">
+            <span class="button-icon">💖</span> Donate Now <span class="button-icon">💖</span>
+        </button>
+        
+        <p id="donation-status" style="display: none; color: #666; margin-top: 10px; font-style: italic;">
+            Waking up the server...
+        </p>
+        </div>
+    -->
+
+    <div class="card" style="text-align: center; margin-bottom: 40px;">
+        <h2 style="color: var(--nature-green); margin-bottom: 2rem;">
+            Spread the Word
+        </h2>
+        <p>Follow our journey or share our details with a friend.</p>
+        
+        <div class="button-group">
+            
+            <a href="https://www.facebook.com/chitchatchaiM16" target="_blank" class="push-button">
+                <i class="fa-brands fa-facebook button-icon"></i> Visit our Facebook
+            </a>
+
+            <a href="https://wa.me/?text=Hi! I thought you might like to join Chit Chat Chai at St Margaret’s Centre..." target="_blank" class="push-button">
+                <i class="fa-brands fa-whatsapp button-icon"></i> Share on WhatsApp
+            </a>
+
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.chitchatchai.co.uk/" target="_blank" class="push-button">
+                <i class="fa-solid fa-share-nodes button-icon"></i> Share on Facebook
+            </a>
+
+        </div>
+    </div>
+
+
+    <div class="card" style="text-align: center; margin-bottom: 40px;">
+    <h2 style="color: var(--nature-green); margin-bottom: 2rem;">
+        Contact Us
+    </h2>
+    <p>Or just swing by for a friendly cuppa — we'd love to meet you.</p>
+
+        <button class="push-button" onclick="toggleContactForm()">
+        <span class="button-icon">✉️</span> Send us a Message
+        </button>
+    </div>
+
+    <div id="contactFormContainer" class="contact-form-card">
+        <div class="card">
+        <h2 style="color: var(--nature-green); margin-bottom: 2rem;">
+            Contact ChitChatChai
+        </h2>
+        <form action="https://formspree.io/f/mdaollor" method="POST">
+            <label>Your Name
+            <input type="text" name="name" placeholder="Enter your name" required>
+            </label>
+            <label>Your Email
+            <input type="email" name="email" placeholder="email@example.com" required>
+            </label>
+            <label>Message
+            <textarea name="message" rows="4" placeholder="How can we help?" required></textarea>
+            </label>
+            <div class="form-actions">
+            <button type="submit" class="button">Send Message</button>
+            </div>
+        </form>
+        </div>
+    </div>
+</section>

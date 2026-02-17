@@ -10,6 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(() => console.log("Local backend nudged!"))
             .catch(err => console.log("Backend not running yet."));
 
+    loadComponent('why-ccc-placeholder', 'components/why-ccc.html');
+    loadComponent('crew-manifest-placeholder', 'components/crew-manifest.html');
+    loadComponent('funders-section-placeholder', 'components/funders-section.html');
+    loadComponent('interactive-section-placeholder', 'components/interactive-section.html');
+
     // --- Journey Logic ---
     const tabButtons = document.querySelectorAll('.tab-btn');
     const target = document.getElementById('journey-content-target');
@@ -161,4 +166,18 @@ function setupFormListener() {
             };
         } else { alert("Oops! Try again."); }
     };
+}
+
+async function loadComponent(id, path) {
+    const placeholder = document.getElementById(id);
+    if (!placeholder) return;
+    
+    try {
+        const response = await fetch(path);
+        if (!response.ok) throw new Error(`Failed to load ${path}`);
+        const html = await response.text();
+        placeholder.innerHTML = html;
+    } catch (error) {
+        console.error("Component load error:", error);
+    }
 }

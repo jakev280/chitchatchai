@@ -1,5 +1,5 @@
 ChitChatChai 🍵
-Current website link: https://jakev280.github.io/chitchatchai/
+Current website link: https://](https://chitchatchai.co.uk/
 ChitChatChai is dedicated to providing a relaxed, welcoming space where women can learn and practise English at their own pace.
 
 🚀 Overview

@@ -23,16 +23,22 @@ A modern web browser
 Installation & Local Development
 Clone the repository:
 
-Bash
+```bash
 
 git clone https://github.com/jakev280/chitchatchai.git
 cd chitchatchai
+
+```
+
 Set up the Backend: Navigate to your backend directory and install the necessary Python packages:
 
-Bash
+```bash
 
 pip install -r requirements.txt
 python3 app.py  # Or your specific entry point
+
+```
+
 Run the Frontend: Simply open index.html in your browser, or use a local live server extension.
 
 🤝 Contributing

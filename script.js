@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
     loadComponent('volunteers-placeholder', 'components/volunteers.html');
     loadComponent('funders-placeholder', 'components/funders.html');
     loadComponent('interactive-placeholder', 'components/interactive.html');
+    loadComponent('past-funders-placeholder', 'components/past-funders.html');
+    loadComponent('community-connections-placeholder', 'components/community-connections.html');
 
     // --- Journey Logic ---
     const tabButtons = document.querySelectorAll('.tab-btn');

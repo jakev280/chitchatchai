@@ -10,10 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(() => console.log("Local backend nudged!"))
             .catch(err => console.log("Backend not running yet."));
 
-    loadComponent('why-ccc-placeholder', 'components/why-ccc.html');
-    loadComponent('crew-manifest-placeholder', 'components/crew-manifest.html');
-    loadComponent('funders-section-placeholder', 'components/funders-section.html');
-    loadComponent('interactive-section-placeholder', 'components/interactive-section.html');
+    loadComponent('introduction-placeholder', 'components/introduction.html');
+    loadComponent('volunteers-placeholder', 'components/volunteers.html');
+    loadComponent('funders-placeholder', 'components/funders.html');
+    loadComponent('interactive-placeholder', 'components/interactive.html');
+    loadComponent('past-funders-placeholder', 'components/past-funders.html');
+    loadComponent('community-connections-placeholder', 'components/community-connections.html');
 
     // --- Journey Logic ---
     const tabButtons = document.querySelectorAll('.tab-btn');

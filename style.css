@@ -230,43 +230,175 @@ h2 { color: var(--primary-brown); margin-top: 0; }
     margin-top: 10px;
 }
 
+.funder-summary {
+    color: var(--primary-brown);
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
 /* CONTACT FORM & BUTTONS */
 
+/* --- The "Get in Touch" Toggle Button --- */
 .push-button {
     text-decoration: none;
     width: 280px;
     background: var(--nature-green); 
-    color: #ffffff;
+    color: var(--page-bg); /* Use Steamed Milk for text */
     border: none; 
     padding: 1.2rem 2.5rem;
     font-size: 1rem; 
     font-weight: bold;
     border-radius: 50px; 
     cursor: pointer;
+    /* Using the Peppercorn brown for the shadow depth */
     box-shadow: 0 6px 0 var(--primary-brown);
     transition: all 0.1s ease;
-    
     display: flex; 
     margin: 20px auto; 
-    
     align-items: center; 
     justify-content: center; 
     gap: 10px;
 }
 
-.push-button:active { transform: translateY(6px); box-shadow: 0 0 0 var(--primary-brown); }
-
-.contact-form-card {
-    max-height: 0; opacity: 0; overflow: hidden;
-    transition: all 0.5s ease; max-width: 600px; margin: 0 auto;
+.push-button:hover {
+    background: #5a702b; /* Slightly lighter green for hover */
 }
 
-.contact-form-card.is-visible { max-height: 800px; opacity: 1; padding-top: 20px; }
+.push-button:active { 
+    transform: translateY(6px); 
+    box-shadow: 0 0 0 var(--primary-brown); 
+}
 
-.contact-form-card label { display: block; margin-bottom: 1rem; font-weight: bold; color: var(--primary-brown); }
+/* --- The Contact Form Card --- */
+.contact-form-card {
+    max-height: 0; 
+    opacity: 0; 
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
+    max-width: 600px; 
+    margin: 0 auto;
+    background: var(--funder-bg); /* White background for the form area */
+    border-radius: 12px;
+}
 
-.contact-form-card input, .contact-form-card textarea {
-    width: 100%; padding: 12px; margin-top: 5px; border-radius: 6px; border: 1px solid #ddd;
+.contact-form-card.is-visible { 
+    max-height: 850px; 
+    opacity: 1; 
+    padding: 2rem; /* Add padding when visible */
+    margin-top: 20px;
+    box-shadow: 0 10px 30px rgba(18, 13, 8, 0.1); /* Subtle peppercorn shadow */
+}
+
+.contact-form-card label { 
+    display: block; 
+    margin-bottom: 0.5rem; 
+    font-weight: bold; 
+    color: var(--primary-brown); 
+}
+
+/* --- Inputs & Textareas --- */
+/* --- The "Get in Touch" Toggle Button --- */
+.push-button {
+    text-decoration: none;
+    width: 300px;
+    background: var(--nature-green); 
+    color: var(--page-bg); /* Steamed Milk text */
+    border: none; 
+    padding: 1.2rem 2.5rem;
+    font-size: 1.1rem; 
+    font-weight: bold;
+    border-radius: 50px; 
+    cursor: pointer;
+    /* Use a darker shade of green for the shadow instead of black */
+    box-shadow: 0 6px 0 #3a4a1c; 
+    transition: all 0.1s ease;
+    display: flex; 
+    margin: 30px auto; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 10px;
+}
+
+.push-button:hover {
+    background: #5a702b; /* Lighter green on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 8px 0 #3a4a1c;
+}
+
+.push-button:active { 
+    transform: translateY(6px); 
+    box-shadow: 0 0 0 #3a4a1c; 
+}
+
+/* --- The Contact Form Card --- */
+.contact-form-card {
+    max-height: 0; 
+    opacity: 0; 
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
+    max-width: 600px; 
+    margin: 0 auto;
+    background: var(--funder-bg); /* White card */
+    border-radius: 15px;
+    border: 2px solid var(--tab-bg); /* Soft tan border instead of shadow */
+}
+
+.contact-form-card.is-visible { 
+    max-height: 850px; 
+    opacity: 1; 
+    padding: 2.5rem; 
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+/* --- Form Typography --- */
+.contact-form-card label { 
+    display: block; 
+    margin-bottom: 0.5rem; 
+    font-weight: bold; 
+    color: var(--nature-green); /* Green labels instead of black */
+}
+
+/* --- Inputs & Textareas --- */
+.contact-form-card input, 
+.contact-form-card textarea {
+    width: 100%; 
+    padding: 14px; 
+    margin-bottom: 1.5rem; 
+    border-radius: 10px; 
+    border: 2px solid var(--tab-bg); 
+    background: var(--page-bg);     
+    color: var(--nature-green);
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+/* Focus state: Turmeric Gold glow */
+.contact-form-card input:focus, 
+.contact-form-card textarea:focus {
+    outline: none;
+    border-color: var(--accent-tan);
+    background: #ffffff; /* Whiten the background when typing */
+}
+
+/* --- Submit Button --- */
+.contact-form-card .button {
+    display: block;
+    width: 100%;
+    background: var(--nature-green); /* Use the Gold for the final action */
+    color: #ffffff !important; /* Brown text on gold is very readable */
+    padding: 1.2rem;
+    border: none;
+    border-radius: 10px; 
+    font-weight: bold; 
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.contact-form-card .button:hover {
+    background: var(--nature-green); 
+    transform: scale(1.02);
 }
 
 .button {
@@ -322,55 +454,13 @@ footer strong {
   border-radius: 10px;
 }
 
-.arrow {
-    background: rgba(255, 255, 255, 0.05) !important; /* Semi-transparent */
-    color: var(--accent-tan) !important;
-    border: 1px solid rgba(244, 180, 26, 0.3) !important; /* Subtle gold border */
-    width: 10px;
-    height: 75px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: none !important; /* Remove the heavy 3D effect for navigation */
-    transition: all 0.3s ease !important;
-}
+/* --- Introduction Story --- */
 
-.arrow:hover {
-    background: var(--accent-tan) !important;
-    color: var(--primary-brown) !important;
-    transform: scale(1.1);
+.contact-form-card.is-visible {
+    max-height: 1200px; /* Adjust this if the text gets cut off */
+    opacity: 1;
+    overflow: visible; /* Allows the dashed box to show properly */
 }
-
-.arrow:active {
-    transform: scale(0.9);
-}
-
-.chip {
-    padding: 10px 20px;
-    border: 2px solid #ddd;
-    border-radius: 25px;
-    background: white;
-    cursor: pointer;
-    font-weight: bold;
-    color: black;
-    transition: all 0.2s ease;
-}
-
-.chip.active {
-    border-color: #6772e5;
-    background: #f0f2ff;
-    color: #6772e5;
-}
-
-/* DARK MODE 
-@media (prefers-color-scheme: dark) {
-    body { background: #1a1a1a; color: #f4f4f9; }
-    .card, .funder-card { background: #2d2d2d; }
-    .funder-card.is-expanded { background: #3d3d3d; }
-    footer { background: #111; color: #888; }
-}
-*/
 
 /* MOBILE ADJUSTMENTS */
 @media (max-width: 600px) {
@@ -392,14 +482,30 @@ footer strong {
 }
 
 /* ANIMATIONS */
+/* 1. The default state (hidden and shifted down) */
+.scroll-reveal {
+    opacity: 0;
+    will-change: transform, opacity; 
+}
+
+/* 2. The active state (triggered by JS) */
+.scroll-reveal.is-visible {
+    /* 1.2s = Duration | 0.2s = Slight delay */
+    animation: fadeIn 1s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+}
+
+/* Use your existing keyframes */
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { 
+        opacity: 0; 
+        transform: translateY(50px);
+        filter: blur(5px); /* Adds a soft focus effect as it appears */
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0);
+        filter: blur(0);
+    }
 }
 
 
-.funder-summary {
-    color: var(--primary-brown);
-    font-size: 1rem;
-    line-height: 1.4;
-}

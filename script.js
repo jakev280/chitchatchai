@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         });
     }, { 
-        threshold: 0.1, // Wait until 25% of the component is visible
+        threshold: 0.10, // Wait until 20% of the component is visible
         rootMargin: '0px 0px -50px 0px' // "Bottom margin" - triggers slightly before it hits the bottom
     });
 

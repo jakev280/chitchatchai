@@ -236,8 +236,6 @@ h2 { color: var(--primary-brown); margin-top: 0; }
     line-height: 1.4;
 }
 
-/* CONTACT FORM & BUTTONS */
-
 /* --- The "Get in Touch" Toggle Button --- */
 .push-button {
     text-decoration: none;
@@ -269,69 +267,16 @@ h2 { color: var(--primary-brown); margin-top: 0; }
     box-shadow: 0 0 0 var(--primary-brown); 
 }
 
-/* --- The Contact Form Card --- */
-.contact-form-card {
-    max-height: 0; 
-    opacity: 0; 
-    overflow: hidden;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
-    max-width: 600px; 
-    margin: 0 auto;
-    background: var(--funder-bg); /* White background for the form area */
-    border-radius: 12px;
+.button {
+    display: inline-block; background: var(--primary-brown);
+    color: var(--page-bg) !important; padding: 0.6rem 1.2rem;
+    border-radius: 6px; font-weight: bold; text-decoration: none;
 }
 
-.contact-form-card.is-visible { 
-    max-height: 850px; 
-    opacity: 1; 
-    padding: 2rem; /* Add padding when visible */
-    margin-top: 20px;
-    box-shadow: 0 10px 30px rgba(18, 13, 8, 0.1); /* Subtle peppercorn shadow */
-}
-
-.contact-form-card label { 
-    display: block; 
-    margin-bottom: 0.5rem; 
-    font-weight: bold; 
-    color: var(--primary-brown); 
-}
-
-/* --- Inputs & Textareas --- */
-/* --- The "Get in Touch" Toggle Button --- */
-.push-button {
-    text-decoration: none;
-    width: 300px;
-    background: var(--nature-green); 
-    color: var(--page-bg); /* Steamed Milk text */
-    border: none; 
-    padding: 1.2rem 2.5rem;
-    font-size: 1.1rem; 
-    font-weight: bold;
-    border-radius: 50px; 
-    cursor: pointer;
-    /* Use a darker shade of green for the shadow instead of black */
-    box-shadow: 0 6px 0 #3a4a1c; 
-    transition: all 0.1s ease;
-    display: flex; 
-    margin: 30px auto; 
-    align-items: center; 
-    justify-content: center; 
-    gap: 10px;
-}
-
-.push-button:hover {
-    background: #5a702b; /* Lighter green on hover */
-    transform: translateY(-2px);
-    box-shadow: 0 8px 0 #3a4a1c;
-}
-
-.push-button:active { 
-    transform: translateY(6px); 
-    box-shadow: 0 0 0 #3a4a1c; 
-}
 
 /* --- The Contact Form Card --- */
 .contact-form-card {
+    display: block;
     max-height: 0; 
     opacity: 0; 
     overflow: hidden;
@@ -344,11 +289,12 @@ h2 { color: var(--primary-brown); margin-top: 0; }
 }
 
 .contact-form-card.is-visible { 
-    max-height: 850px; 
+    max-height: none !important;
     opacity: 1; 
-    padding: 2.5rem; 
+    padding: 2rem; 
     margin-top: 20px;
     margin-bottom: 40px;
+    overflow: visible;
 }
 
 /* --- Form Typography --- */
@@ -401,11 +347,6 @@ h2 { color: var(--primary-brown); margin-top: 0; }
     transform: scale(1.02);
 }
 
-.button {
-    display: inline-block; background: var(--primary-brown);
-    color: var(--page-bg) !important; padding: 0.6rem 1.2rem;
-    border-radius: 6px; font-weight: bold; text-decoration: none;
-}
 
 /* FOOTER */
 footer {
@@ -454,31 +395,39 @@ footer strong {
   border-radius: 10px;
 }
 
-/* --- Introduction Story --- */
 
-.contact-form-card.is-visible {
-    max-height: 1200px; /* Adjust this if the text gets cut off */
-    opacity: 1;
-    overflow: visible; /* Allows the dashed box to show properly */
-}
-
-/* MOBILE ADJUSTMENTS */
+/* --- MOBILE UX FIXES --- */
 @media (max-width: 600px) {
-    header h1 { font-size: 2rem; letter-spacing: 1px; }
-    header h1::after { width: 90%; max-width: 300px; }
-    .header-logo { height: 45px; }
-    .event-details { display: flex; flex-direction: column; gap: 8px; border-radius: 15px; }
-}
+    /* Prevents the card from being too wide for the phone screen */
+    .card {
+        padding: 1rem !important; /* Forces smaller padding on phones */
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
+    }
 
-@media (max-width: 600px) {
-    .header-logo-circle { width: 50px; height: 50px; }
-    .event-details { font-size: 0.75rem; padding: 0.4rem 0.8rem; }
-}
+    /* Fixes the images in "Through the Years" */
+    .slide.active {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
 
-@media (max-width: 800px) {
-  .slide.active {
-    flex-direction: column;
-  }
+    .slide figure {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+
+    /* Makes the button fill the screen width */
+    .push-button {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* Shrink the header text so it doesn't wrap awkwardly */
+    h2 {
+        font-size: 1.2rem !important;
+    }
 }
 
 /* ANIMATIONS */

@@ -424,6 +424,25 @@ footer strong {
         max-width: 100% !important;
     }
 
+    .header-tagline {
+        display: none; /* This removes the text entirely from the layout */
+    }
+
+    .header-content {
+        display: flex;
+        flex-direction: row; /* Keep them side-by-side */
+        justify-content: space-between; /* Logo left, Pill right */
+        align-items: center;
+        padding: 10px 15px;
+        gap: 20px;
+    }
+
+    
+
+    .header-brand {
+        gap: 0; /* Since the text is gone, we don't need the gap anymore */
+    }
+
     /* Shrink the header text so it doesn't wrap awkwardly */
     h2 {
         font-size: 1.2rem !important;

@@ -192,6 +192,56 @@ h2 { color: var(--primary-brown); margin-top: 0; }
   display: block;
 }
 
+/* Center the pile on the page */
+.scrapbook-pile {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Style the Polaroid frame */
+.polaroid {
+  background-color: #ffffff;
+  padding: 15px 15px 40px 15px; /* Extra padding on the bottom for the classic look */
+  box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.15);
+  margin: -20px; /* Negative margin pulls them together into an overlapping pile */
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), z-index 0s;
+  position: relative; /* Needed for z-index to work */
+  z-index: 1;
+}
+
+/* Make sure the images fit the frame */
+.polaroid img {
+  display: block;
+  max-width: 250px;
+  height: auto;
+  border: 1px solid #eeeeee;
+  aspect-ratio: 1 / 1; 
+  object-fit: cover;
+}
+
+/* The Scatter Effect (Faking Randomness) */
+.polaroid:nth-child(1) { transform: rotate(-8deg); }
+.polaroid:nth-child(2) { transform: rotate(5deg); margin-top: 30px; }
+.polaroid:nth-child(3) { transform: rotate(-3deg); margin-top: -10px;}
+.polaroid:nth-child(4) { transform: rotate(12deg); margin-top: 20px;}
+.polaroid:nth-child(5) { transform: rotate(-10deg); }
+
+/* Keep the pattern going if you have more photos! */
+.polaroid:nth-child(odd) { transform: rotate(6deg); }
+.polaroid:nth-child(even) { transform: rotate(-4deg); }
+
+/* The Interactive "Pick Up" Hover Effect */
+.polaroid:hover {
+  transform: scale(1.15) rotate(0deg); /* Scales up and straightens out */
+  box-shadow: 5px 15px 30px rgba(0, 0, 0, 0.4); /* Deepens the shadow */
+  z-index: 10; /* Forces the hovered image to the very top of the pile */
+  cursor: pointer;
+}
 
 /* FUNDER CARDS */
 .funder-grid {

@@ -263,12 +263,6 @@ h2 { color: var(--primary-brown); margin-top: 0; }
 
 .funder-card:hover { transform: translateY(-3px); border: 2px solid var(--accent-tan); }
 
-.funder-logo {
-    width: 60px; height: 60px;
-    object-fit: contain; background: white;
-    padding: 5px; border-radius: 50%;
-}
-
 .funder-details {
     max-height: 0; opacity: 0;
     transition: all 0.4s ease;
@@ -284,6 +278,43 @@ h2 { color: var(--primary-brown); margin-top: 0; }
     color: var(--primary-brown);
     font-size: 1rem;
     line-height: 1.4;
+}
+
+.supporter-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #eef4e2;
+    color: var(--primary-brown);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    border: 1px solid rgba(74, 93, 35, 0.15);
+}
+
+.supporter-card .funder-logo {
+    width: 84px;
+    height: 84px;
+    max-width: 84px;
+    max-height: 84px;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    background: white;
+    padding: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    align-self: center;
+}
+
+.funder-text {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.funder-text strong {
+    color: var(--nature-green);
 }
 
 /* --- The "Get in Touch" Toggle Button --- */

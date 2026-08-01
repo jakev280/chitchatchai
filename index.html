@@ -25,15 +25,18 @@
         <span class="detail-item"><strong>📍 St Margarets Centre</strong></span>
       </div>
     </div>
+    <nav class="section-nav" aria-label="Jump to page sections">
+      <a href="#introduction-placeholder">Stories</a>
+      <a href="#funders-placeholder">Funders</a>
+      <a href="#through-the-years-placeholder">Highlights</a>
+      <a href="#volunteers-placeholder">Team & Community</a>
+      <a href="#interactive-placeholder">Connect</a>
+    </nav>
   </header>
 
   <img src="images/2022-2.png" alt="Chit Chat Chai 2021 Session" class="header-main-img">
 
   <div id="introduction-placeholder"></div>
-
-
-
-
   <div id="funders-placeholder"></div>
   <div id="through-the-years-placeholder"></div>
   <div id="volunteers-placeholder"></div>
@@ -41,10 +44,17 @@
   <div id="past-funders-placeholder"></div>
   <div id="interactive-placeholder"></div>
 
+  <div id="mobile-story-overlay" class="mobile-story-overlay" aria-hidden="true">
+    <div class="mobile-story-panel" role="dialog" aria-modal="true" aria-labelledby="mobile-story-title">
+      <button type="button" class="story-close-button" onclick="toggleStoryText()" aria-label="Close story">×</button>
+      <div id="mobile-story-inner"></div>
+    </div>
+  </div>
+
 <footer class="main-footer">
     <div class="footer-content">
-        <p>Developed by <strong>Jake Virdee-Reynolds</strong> & <strong>Jason Akrong</strong></p>
-        <p>&copy; 2026 ChitChatChai – Community initiative</p>
+        <p>Developed by Jake Virdee-Reynolds & Jason Akrong</p>
+        <p><strong>&copy; 2026 ChitChatChai </strong>– Community initiative</p>
         <p>Unincorporated Association</p>
     </div>
 </footer>

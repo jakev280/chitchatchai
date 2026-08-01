@@ -26,12 +26,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     await loadComponent('through-the-years-placeholder', 'components/through-the-years.html');
 
     // --- Journey Logic ---
-    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabButtons = document.querySelectorAll('.tab-btn[data-year]');
     
 
     async function switchYear(yearId) {
         const target = document.getElementById('journey-content-target');
-        if (!target) return;
+        if (!target || !yearId) return;
         target.style.opacity = '0.5';
         try {
             const response = await fetch(`components/years/${yearId}.html`);
@@ -51,8 +51,29 @@ document.addEventListener('DOMContentLoaded', async () => {
         button.addEventListener('click', () => {
             tabButtons.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
-            switchYear(button.getAttribute('data-year'));
+            const yearId = button.getAttribute('data-year');
+            if (yearId) {
+                switchYear(yearId);
+            }
         });
+    });
+
+    document.body.addEventListener('click', (event) => {
+        const funderButton = event.target.closest('.funder-tab-btn');
+        if (!funderButton) return;
+
+        const allFunderButtons = document.querySelectorAll('.funder-tab-btn');
+        allFunderButtons.forEach(btn => btn.classList.remove('active'));
+        funderButton.classList.add('active');
+
+        const targetId = funderButton.getAttribute('data-target');
+        const allFunderTabs = document.querySelectorAll('.funder-tab-content');
+        allFunderTabs.forEach(tab => tab.classList.remove('active'));
+
+        const targetPanel = document.getElementById(targetId);
+        if (targetPanel) {
+            targetPanel.classList.add('active');
+        }
     });
 
     switchYear('year2025'); // Default load
@@ -146,18 +167,34 @@ async function loadComponent(id, path) {
 }
 
 function toggleStoryText() {
+    const mobileOverlay = document.getElementById('mobile-story-overlay');
+    const mobileInner = document.getElementById('mobile-story-inner');
     const storyBody = document.getElementById('story-body');
     const btn = document.getElementById('story-btn');
-    
-    if (!storyBody || !btn) return;
 
-    const isVisible = storyBody.classList.contains('is-visible');
-    
-    if (isVisible) {
-        storyBody.classList.remove('is-visible');
-        btn.innerHTML = 'Read Our Story';
+    if (!mobileOverlay || !mobileInner || !storyBody || !btn) return;
+
+    const isMobile = window.matchMedia('(max-width: 760px)').matches;
+    const isOverlayVisible = mobileOverlay.classList.contains('is-visible');
+    const isDesktopVisible = storyBody.classList.contains('is-visible');
+
+    if (isMobile) {
+        if (isOverlayVisible) {
+            mobileOverlay.classList.remove('is-visible');
+            btn.innerHTML = 'Read Story';
+        } else {
+            mobileInner.innerHTML = storyBody.innerHTML;
+            mobileOverlay.classList.add('is-visible');
+            btn.innerHTML = 'Close Story';
+        }
     } else {
-        storyBody.classList.add('is-visible');
-        btn.innerHTML = 'Close Story';
+        if (isDesktopVisible) {
+            storyBody.classList.remove('is-visible');
+            btn.innerHTML = 'Read Story';
+        } else {
+            storyBody.classList.add('is-visible');
+            btn.innerHTML = 'Close Story';
+        }
     }
 }
+

@@ -334,24 +334,6 @@ h2 { color: var(--primary-brown); margin-top: 0; }
   width: 100%;
 }
 
-@media (max-width: 760px) {
-  .scrapbook-pile {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 24px;
-    padding: 15px 0 15px;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .scrapbook-pile figure {
-    flex: 0 0 min(360px, 100%);
-    scroll-snap-align: center;
-    min-width: 320px;
-  }
-}
-
 .scrapbook-pile figcaption {
   margin: 0;
   color: var(--primary-brown);
@@ -497,7 +479,6 @@ h2 { color: var(--primary-brown); margin-top: 0; }
     border: 1px solid rgba(74, 93, 35, 0.15);
 }
 
-
 .supporter-card .funder-logo {
     width: 84px;
     height: 84px;
@@ -511,12 +492,26 @@ h2 { color: var(--primary-brown); margin-top: 0; }
     padding: 8px;
     border-radius: 50%;
     flex-shrink: 0;
-    align-self: center;
 }
 
 .supporter-body {
-    flex: 1 1 280px;
+    flex: 1 1 260px;
     min-width: 0;
+}
+
+@media (max-width: 760px) {
+    .supporter-card {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .supporter-card .funder-logo {
+        margin: 0 auto;
+    }
+
+    .supporter-body {
+        width: 100%;
+    }
 }
 
 .funder-text {
@@ -601,6 +596,7 @@ h2 { color: var(--primary-brown); margin-top: 0; }
 
 /* --- The Contact Form Card --- */
 .contact-form-card {
+    position: relative;
     display: block;
     max-height: 0; 
     opacity: 0; 
@@ -620,6 +616,117 @@ h2 { color: var(--primary-brown); margin-top: 0; }
     margin-top: 20px;
     margin-bottom: 40px;
     overflow: visible;
+}
+
+.story-close-button {
+    display: none;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(74, 93, 35, 0.12);
+    color: var(--primary-brown);
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.mobile-story-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(18, 13, 8, 0.45);
+    z-index: 3000;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.mobile-story-overlay.is-visible {
+    display: flex;
+}
+
+.mobile-story-panel {
+    width: min(100%, 92vw);
+    max-width: 680px;
+    max-height: 88vh;
+    overflow-y: auto;
+    border-radius: 24px;
+    border: 2px solid var(--nature-green);
+    background: #ffffff;
+    box-shadow: 0 18px 60px rgba(0,0,0,0.18);
+    position: relative;
+    padding: 2rem 1.5rem 2rem;
+}
+
+.mobile-story-panel .story-close-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.mobile-story-panel .contact-form-card {
+    position: static;
+    max-height: none !important;
+    opacity: 1 !important;
+    overflow: visible;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+}
+
+@media (max-width: 760px) {
+    .story-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(18, 13, 8, 0.45);
+        z-index: 2400;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        overflow-y: auto;
+    }
+
+    .story-overlay.is-visible {
+        display: flex;
+    }
+
+    .story-overlay.is-visible .contact-form-card {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        width: min(100%, 92vw);
+        max-width: 680px;
+        max-height: 88vh;
+        overflow-y: auto;
+        margin: 0;
+        padding: 2rem 1.5rem 2rem;
+        border-radius: 22px;
+        border: 2px solid var(--nature-green);
+        background: #ffffff;
+        box-shadow: 0 18px 60px rgba(0,0,0,0.18);
+    }
+
+    .story-overlay.is-visible .contact-form-card .story-close-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .story-overlay.is-visible .contact-form-card {
+        padding-top: 3.5rem;
+    }
 }
 
 .newspaper-article {

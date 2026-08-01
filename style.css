@@ -282,7 +282,8 @@ h2 { color: var(--primary-brown); margin-top: 0; }
 
 .supporter-card {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
+    align-items: flex-start;
     gap: 16px;
     background: #eef4e2;
     color: var(--primary-brown);
@@ -308,9 +309,36 @@ h2 { color: var(--primary-brown); margin-top: 0; }
     align-self: center;
 }
 
+.supporter-body {
+    flex: 1 1 280px;
+    min-width: 0;
+}
+
 .funder-text {
-    margin: 0;
+    margin: 0 0 12px;
     line-height: 1.5;
+}
+
+.funder-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.funder-photo {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    display: block;
+    border-radius: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.85);
+    box-shadow: 0 6px 16px rgba(18, 13, 8, 0.12);
+}
+
+@media (max-width: 640px) {
+    .funder-gallery {
+        grid-template-columns: 1fr;
+    }
 }
 
 .funder-text strong {

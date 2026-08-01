@@ -16,6 +16,10 @@
 /* BASE STYLES */
 * { box-sizing: border-box; }
 
+html {
+    scroll-padding-top: 220px;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
@@ -23,6 +27,7 @@ body {
     color: var(--primary-brown);
     line-height: 1.6;
     transition: background 0.3s ease, color 0.3s ease;
+    scroll-behavior: smooth;
 }
 
 /* HEADER & TYPOGRAPHY */
@@ -82,6 +87,28 @@ header h1::after {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.section-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.section-nav a {
+    color: #ffffff;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.12);
+    padding: 0.55rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.94rem;
+    transition: background 0.2s ease;
+}
+
+.section-nav a:hover {
+    background: rgba(255, 255, 255, 0.22);
 }
 
 /* CIRCULAR LOGO (Same style as founders) */
@@ -151,32 +178,126 @@ h2 { color: var(--primary-brown); margin-top: 0; }
 /* TABS (What We Do) */
 .tab-container {
     display: flex;
-    gap: 10px;
-    margin-bottom: -1px;
-    overflow-x: auto;
-    padding-bottom: 5px;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    padding: 0;
+    max-width: 760px;
+    width: min(100%, 760px);
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+
+@media (max-width: 760px) {
+    .tab-container {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding: 0.5rem 0;
+        margin-bottom: 1.25rem;
+        background: transparent;
+    }
+
+    .tab-btn {
+        flex: 0 0 auto;
+    }
 }
 
 .tab-btn {
-    background: var(--tab-bg);
+    background: #ffffff;
     color: var(--primary-brown);
-    border: none;
-    padding: 10px 20px;
+    border: 1px solid rgba(74, 93, 35, 0.14);
     cursor: pointer;
-    border-radius: 8px 8px 0 0;
-    font-weight: bold;
-    transition: 0.3s;
+    border-radius: 999px;
+    font-weight: 700;
+    transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+    min-width: 72px;
+    min-height: 72px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
 }
 
-.tab-btn.active { 
-    background: var(--tab-bg); 
-    color: var(--primary-brown); 
-    border: 2px solid var(--nature-green); 
-    outline: none; 
+.tab-btn:hover {
+    transform: translateY(-1px);
+    border-color: var(--nature-green);
 }
 
-.tab-content { display: none; }
-.tab-content.active { display: block; }
+.tab-btn.active {
+    background: var(--nature-green);
+    color: #ffffff;
+    border-color: var(--nature-green);
+}
+
+.funder-tabs {
+    position: static;
+    background: transparent;
+    box-shadow: none;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 1.5rem;
+    padding: 0;
+}
+
+.funder-tab-btn {
+    min-width: 80px;
+    min-height: 80px;
+    padding: 0.9rem;
+    border-radius: 20px;
+    background: #ffffff;
+    border: 1px solid rgba(74, 93, 35, 0.18);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.funder-tab-btn:hover {
+    transform: translateY(-1px);
+    border-color: var(--nature-green);
+}
+
+.funder-tab-btn.active {
+    background: #ffffff;
+    border: 2px solid var(--nature-green);
+    box-shadow: 0 0 0 4px rgba(74, 93, 35, 0.08);
+}
+
+.funder-tab-logo {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    display: block;
+}
+
+.funder-tab-btn.active .funder-tab-logo {
+    filter: none;
+}
+
+.tab-content {
+    display: none;
+    max-width: 1000px;
+    width: min(100%, 1000px);
+    margin: 0 auto;
+    padding: 0 0.5rem;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.funder-tab-content {
+    display: none;
+}
+
+.funder-tab-content.active {
+    display: block;
+}
+
+.funder-tabs {
+    margin-bottom: 1.5rem;
+}
 
 .journey-image {
   width: 100%;
@@ -194,53 +315,136 @@ h2 { color: var(--primary-brown); margin-top: 0; }
 
 /* Center the pile on the page */
 .scrapbook-pile {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  padding: 50px;
-  max-width: 900px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 28px;
+  padding: 15px 0 0;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
-/* Style the Polaroid frame */
+.scrapbook-pile figure {
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.scrapbook-pile .funder-photo {
+  min-height: 360px;
+  width: 100%;
+}
+
+@media (max-width: 760px) {
+  .scrapbook-pile {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 24px;
+    padding: 15px 0 15px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .scrapbook-pile figure {
+    flex: 0 0 min(360px, 100%);
+    scroll-snap-align: center;
+    min-width: 320px;
+  }
+}
+
+.scrapbook-pile figcaption {
+  margin: 0;
+  color: var(--primary-brown);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+/* Style the image card frame */
 .polaroid {
   background-color: #ffffff;
-  padding: 15px 15px 40px 15px; /* Extra padding on the bottom for the classic look */
-  box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.15);
-  margin: -20px; /* Negative margin pulls them together into an overlapping pile */
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), z-index 0s;
-  position: relative; /* Needed for z-index to work */
+  padding: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  margin: 0;
+  transition: transform 0.25s ease, z-index 0s;
+  position: relative;
   z-index: 1;
+  border-radius: 16px;
+  overflow: hidden;
 }
 
 /* Make sure the images fit the frame */
 .polaroid img {
   display: block;
-  max-width: 250px;
+  width: 100%;
   height: auto;
-  border: 1px solid #eeeeee;
-  aspect-ratio: 1 / 1; 
+  border-radius: 14px;
+  border: 1px solid #f1f1f1;
   object-fit: cover;
 }
 
-/* The Scatter Effect (Faking Randomness) */
-.polaroid:nth-child(1) { transform: rotate(-8deg); }
-.polaroid:nth-child(2) { transform: rotate(5deg); margin-top: 30px; }
-.polaroid:nth-child(3) { transform: rotate(-3deg); margin-top: -10px;}
-.polaroid:nth-child(4) { transform: rotate(12deg); margin-top: 20px;}
-.polaroid:nth-child(5) { transform: rotate(-10deg); }
+.polaroid figcaption {
+  margin-top: 0.85rem;
+  color: var(--primary-brown);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
 
-/* Keep the pattern going if you have more photos! */
-.polaroid:nth-child(odd) { transform: rotate(6deg); }
-.polaroid:nth-child(even) { transform: rotate(-4deg); }
-
-/* The Interactive "Pick Up" Hover Effect */
+/* The Hover Effect */
 .polaroid:hover {
-  transform: scale(1.15) rotate(0deg); /* Scales up and straightens out */
-  box-shadow: 5px 15px 30px rgba(0, 0, 0, 0.4); /* Deepens the shadow */
-  z-index: 10; /* Forces the hovered image to the very top of the pile */
-  cursor: pointer;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+  z-index: 2;
+}
+
+@media (max-width: 760px) {
+  .scrapbook-pile {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 20px 0 30px;
+    gap: 14px;
+    border-radius: 0;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .polaroid {
+    min-width: 260px;
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+    padding: 10px;
+  }
+
+  .polaroid img {
+    aspect-ratio: 4 / 5;
+  }
+}
+
+@media (max-width: 760px) {
+  .scrapbook-pile {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 20px 0;
+    gap: 1rem;
+    justify-content: flex-start;
+  }
+
+  .polaroid {
+    margin: 0;
+    min-width: 260px;
+    flex: 0 0 auto;
+    transform: none !important;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.15);
+    border-radius: 18px;
+  }
+
+  .polaroid img {
+    max-width: 100%;
+  }
+
+  .polaroid {
+    scroll-snap-align: center;
+  }
 }
 
 /* FUNDER CARDS */
@@ -293,6 +497,7 @@ h2 { color: var(--primary-brown); margin-top: 0; }
     border: 1px solid rgba(74, 93, 35, 0.15);
 }
 
+
 .supporter-card .funder-logo {
     width: 84px;
     height: 84px;
@@ -335,9 +540,20 @@ h2 { color: var(--primary-brown); margin-top: 0; }
     box-shadow: 0 6px 16px rgba(18, 13, 8, 0.12);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 760px) {
     .funder-gallery {
-        grid-template-columns: 1fr;
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 12px;
+        padding-bottom: 0.5rem;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .funder-photo {
+        min-width: 220px;
+        flex: 0 0 auto;
+        scroll-snap-align: center;
     }
 }
 
@@ -390,20 +606,77 @@ h2 { color: var(--primary-brown); margin-top: 0; }
     opacity: 0; 
     overflow: hidden;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
-    max-width: 600px; 
+    max-width: 620px; 
     margin: 0 auto;
-    background: var(--funder-bg); /* White card */
+    background: #f9f6f1; /* Paper tone */
     border-radius: 15px;
-    border: 2px solid var(--tab-bg); /* Soft tan border instead of shadow */
+    border: 2px solid rgba(0, 0, 0, 0.06); /* Very soft edge */
 }
 
 .contact-form-card.is-visible { 
     max-height: none !important;
     opacity: 1; 
-    padding: 2rem; 
+    padding: 2rem 2.2rem; 
     margin-top: 20px;
     margin-bottom: 40px;
     overflow: visible;
+}
+
+.newspaper-article {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #2d241a;
+    background: transparent;
+    border-color: rgba(0, 0, 0, 0.06);
+    box-shadow: none;
+    line-height: 1.8;
+}
+
+.newspaper-article::before {
+    content: "Chit Chat Chai Gazette";
+    display: block;
+    font-size: 0.85rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #7a624d;
+    margin-bottom: 1rem;
+}
+
+.newspaper-article::after {
+    content: "Edition 2026 · Community Story";
+    display: block;
+    font-size: 0.75rem;
+    color: #7a624d;
+    margin-top: 1.8rem;
+    text-align: right;
+    letter-spacing: 0.1em;
+}
+
+.newspaper-lead {
+    font-size: 1.04rem;
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+}
+
+.newspaper-article p {
+    margin: 0 0 1.35rem;
+}
+
+.newspaper-article p:last-child {
+    margin-bottom: 0;
+}
+
+.newspaper-article blockquote {
+    display: block;
+    font-style: italic;
+    color: #5b4a3f;
+    border-left: 4px solid #d6c1a5;
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    background: rgba(229, 219, 200, 0.35);
+}
+
+.newspaper-article strong {
+    font-weight: 700;
 }
 
 /* --- Form Typography --- */

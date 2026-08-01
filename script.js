@@ -55,6 +55,24 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     });
 
+    document.body.addEventListener('click', (event) => {
+        const funderButton = event.target.closest('.funder-tab-btn');
+        if (!funderButton) return;
+
+        const allFunderButtons = document.querySelectorAll('.funder-tab-btn');
+        allFunderButtons.forEach(btn => btn.classList.remove('active'));
+        funderButton.classList.add('active');
+
+        const targetId = funderButton.getAttribute('data-target');
+        const allFunderTabs = document.querySelectorAll('.funder-tab-content');
+        allFunderTabs.forEach(tab => tab.classList.remove('active'));
+
+        const targetPanel = document.getElementById(targetId);
+        if (targetPanel) {
+            targetPanel.classList.add('active');
+        }
+    });
+
     switchYear('year2025'); // Default load
 
     // --- Form Listener ---
@@ -161,3 +179,4 @@ function toggleStoryText() {
         btn.innerHTML = 'Close Story';
     }
 }
+

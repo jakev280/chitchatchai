@@ -327,11 +327,16 @@ h2 { color: var(--primary-brown); margin-top: 0; }
   margin: 0;
   display: grid;
   gap: 0.75rem;
+  width: 100%;
 }
 
 .scrapbook-pile .funder-photo {
-  min-height: 360px;
+    
   width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
 }
 
 .scrapbook-pile figcaption {
@@ -554,6 +559,13 @@ h2 { color: var(--primary-brown); margin-top: 0; }
 
 .funder-text strong {
     color: var(--nature-green);
+}
+
+/* Year section highlights */
+.card strong,
+.tab-content .card strong {
+    color: var(--accent-tan);
+    font-weight: 800;
 }
 
 /* --- The "Get in Touch" Toggle Button --- */

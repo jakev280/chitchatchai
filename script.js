@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
 
-    switchYear('year2025'); // Default load
+    switchYear('year2026'); // Default load
 
     // --- Form Listener ---
     setupFormListener();
